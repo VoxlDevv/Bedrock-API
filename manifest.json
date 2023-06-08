@@ -1,1 +1,33 @@
-[object ArrayBuffer]
+{
+  "format_version": 2,
+  "header": {
+    "name": "§eJSAPI",
+    "description": "§cMade By §fJustSkyDev(YouTube)",
+    "uuid": "405e8f7a-db2d-11ed-afa1-0242ac120002",
+    "version": [1, 0, 0],
+    "min_engine_version": [1, 20, 0]
+  },
+  "modules": [
+    {
+      "type": "script",
+      "language": "javascript",
+      "uuid": "5900e4e2-642d-4dbc-ba06-57801afd235b",
+      "entry": "scripts/JS/index.js",
+      "version": [1, 0, 0]
+    }
+  ],
+  "dependencies": [
+    {
+      "module_name": "@minecraft/server",
+      "version": "1.3.0-beta"
+    },
+    {
+      "module_name": "@minecraft/server-gametest",
+      "version": "1.0.0-beta"
+    },
+    {
+      "module_name": "@minecraft/server-ui",
+      "version": "1.1.0-beta"
+    }
+  ]
+}
