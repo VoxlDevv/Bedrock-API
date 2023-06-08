@@ -6,7 +6,7 @@ import { FailedClass } from "../message/Failed.Class.js";
 import { CommandRegistration } from "./CommandRegistration.Class.js";
 
 const DB = new Database("GlobalDB");
-const Prefix = DB.get("Command")?.prefix ?? Config.defaultPrefix;
+const Prefix = DB.get("commandPrefix") ?? Config.defaultPrefix;
 
 class CommandClass {
   /**
