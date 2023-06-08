@@ -149,7 +149,7 @@ class Database {
          * @internal
          */
         this.tempCache = new Map();
-        this[_a] = JaylyDB.name;
+        this[_a] = Database.name;
         this.objective = world.scoreboard.getObjective("jaylydb:" + id) ?? world.scoreboard.addObjective("jaylydb:" + id, uuid());
         this.encrypted = encrypted;
         this.salt = this.encrypted ? this.objective.displayName : undefined;
