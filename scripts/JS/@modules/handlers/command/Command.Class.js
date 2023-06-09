@@ -80,11 +80,10 @@ class CommandClass {
     const commandName = this.getCommand(commandArgs);
 
     if (
-      commandName ||
-      (!!commandName.private && !sender.isOp())(
-        commandName?.requireTags.length > 0 &&
-          !commandName?.requireTags.every((i) => sender.getTags().includes(i))
-      )
+      !commandName ||
+      (!!commandName?.private && !sender.isOp()) ||
+      (commandName?.requireTags.length > 0 &&
+        !commandName?.requireTags.every((i) => sender.getTags().includes(i)))
     ) {
       this.failed.InvalidCommand(sender, commandArgs);
     } else
