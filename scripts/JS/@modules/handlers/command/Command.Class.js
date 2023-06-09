@@ -1,9 +1,11 @@
 import { world } from "@minecraft/server";
-import { Database } from "../../storages/Database.Class.js";
-import { Collection } from "../data/Collection.Class.js";
+import {
+  Collection,
+  Database,
+  CommandRegistration,
+  FailedClass,
+} from "../../export.modules.js";
 import { Config } from "../../../config.js";
-import { FailedClass } from "../message/Failed.Class.js";
-import { CommandRegistration } from "./CommandRegistration.Class.js";
 
 const DB = new Database("GlobalDB");
 const Prefix = DB.get("commandPrefix") ?? Config.defaultPrefix;
@@ -78,11 +80,15 @@ class CommandClass {
     }
 
     commandGet.callback({
-      DB: { used: DB, primitive: Database },
+      DB: {
+        used: DB,
+        primitive: Database,
+      },
       raw: packet,
       sender,
       args,
       config: Config,
+      allCommandRegistration: this.getAllCommands(),
     });
   }
 }

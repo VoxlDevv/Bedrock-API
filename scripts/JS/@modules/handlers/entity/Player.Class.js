@@ -1,81 +1,75 @@
 import { world, Player } from "@minecraft/server";
-import { ChatClass } from "../message/Chat.Class.js";
 
 class PlayerClass {
   /**
+   * Player class
+   * @param {Player} playerObject - Player object
+   */
+  constructor(playerObject) {
+    this.playerObject = playerObject;
+  }
+
+  /**
    * Get player scoreboard score
-   * @param {String|Player} player - Player target (player name or object)
    * @param {String} objective - Scoreboard objective name
    * @returns {Number}
    * @example
-   * getScore(playerObj, "money");
-   * getScore("JustSky001", "money");
+   * getScore("money");
    */
-  getScore(player, objective) {
+  getScore(objective) {
     return (
       world.scoreboard.getObjective(objective) ??
       world.scoreboard.addObjective(objective, objective)
-    ).getScore(
-      typeof player === `string`
-        ? world.scoreboard
-            .getParticipants()
-            .find((sb) => sb.displayName == player)
-        : player.scoreboardIdentity
-    );
+    ).getScore(this.playerObject.scoreboardIdentity);
   }
 
   /**
    * Get player xp level
-   * @param {Player} player - Player object
    * @returns {Number}
-   * @example getXpLevel(playerObj);
+   * @example getXpLevel();
    */
-  getXpLevel(player) {
-    return player.level;
+  getXpLevel() {
+    return this.playerObject.level;
   }
 
   /**
    * Get player specific tag
-   * @param {Player} player - Player object
    * @returns {Boolean|String}
-   * @example getSpecificTag(playerObj, "tag:");
+   * @example getSpecificTag("tag:");
    */
-  getSpecificTag(player, startswith) {
-    const check = this.getTags(player)?.find((tag) =>
-      tag.startsWith(startswith)
-    );
+  getSpecificTag(startswith) {
+    const check = this.getTags()?.find((tag) => tag.startsWith(startswith));
     return check ? check : false;
   }
 
   /**
    * Get player all tag
-   * @param {Player} player - Player object
    * @returns {Array<String>}
-   * @example getTags(playerObj);
+   * @example getTags();
    */
-  getTags(player) {
-    return player.getTags();
+  getTags() {
+    return this.playerObject.getTags();
   }
 
   /**
    * Check player if had tag
-   * @param {Player} player - Player object
    * @param {String} tag - Tag
    * @returns {Boolean}
-   * @example hasTag(playerObj, "tag");
+   * @example hasTag("tag");
    */
-  hasTag(player, tag) {
-    return player.hasTag(tag);
+  hasTag(tag) {
+    return this.playerObject.hasTag(tag);
   }
 
   /**
    * Check player if online
-   * @param {Player} player - Player object
    * @returns {Boolean}
-   * @example isOnline(playerObj);
+   * @example isOnline(targetObj);
    */
-  isOnline(player) {
-    return this.getAllPlayers().find((name) => name === player) !== undefined;
+  isOnline(target) {
+    return (
+      this.getAllPlayers().find((name) => name === target.nameTag) !== undefined
+    );
   }
 
   /**

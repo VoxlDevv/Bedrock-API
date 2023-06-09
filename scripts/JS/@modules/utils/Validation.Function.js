@@ -55,3 +55,5 @@ function isArray(array) {
 }
 
 export { isString, isNumber, isInteger, isBoolean, isObject, isArray };
+
+// world.scoreboard.getParticipants().find((sb) => sb.displayName == player)

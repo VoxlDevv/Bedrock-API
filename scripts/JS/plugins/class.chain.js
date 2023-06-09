@@ -8,6 +8,7 @@ export {
   FailedClass,
   Database,
   CooldownClass,
+  Formatter,
   Timer,
   Validation,
 } from "../@modules/export.modules.js";

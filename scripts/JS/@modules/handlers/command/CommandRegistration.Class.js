@@ -1,4 +1,4 @@
-import * as Validator from "../../utils/Validation.Function.js";
+import { Validation } from "../../export.modules.js";
 
 class CommandRegistration {
   /**
@@ -19,7 +19,7 @@ class CommandRegistration {
    * @param {String} string
    */
   setName(string) {
-    if (Validator.isString(string)) this.name = string;
+    if (Validation.isString(string)) this.name = string;
     return this;
   }
 
@@ -28,7 +28,7 @@ class CommandRegistration {
    * @param {String} string
    */
   setDescription(string) {
-    if (Validator.isString(string)) this.description = string;
+    if (Validation.isString(string)) this.description = string;
     return this;
   }
 
@@ -37,7 +37,7 @@ class CommandRegistration {
    * @param {Boolean} boolean
    */
   setPrivate(boolean) {
-    if (Validator.isBoolean(boolean)) this.private = boolean;
+    if (Validation.isBoolean(boolean)) this.private = boolean;
     return this;
   }
 
@@ -46,7 +46,7 @@ class CommandRegistration {
    * @param {String} string
    */
   setCategory(string) {
-    if (Validator.isString(string)) this.category = string;
+    if (Validation.isString(string)) this.category = string;
     return this;
   }
 
@@ -55,7 +55,7 @@ class CommandRegistration {
    * @param {Array<String>} array
    */
   setRequireTags(array) {
-    if (Validator.isArray(array)) this.requireTags = array;
+    if (Validation.isArray(array)) this.requireTags = array;
     return this;
   }
 
@@ -64,7 +64,7 @@ class CommandRegistration {
    * @param {Array<String>} array
    */
   setAliases(array) {
-    if (Validator.isArray(array)) this.aliases = array;
+    if (Validation.isArray(array)) this.aliases = array;
     return this;
   }
   /**
@@ -72,7 +72,7 @@ class CommandRegistration {
    * @param {Array<String>} array
    */
   setUsage(array) {
-    if (Validator.isArray(array)) this.usage = array;
+    if (Validation.isArray(array)) this.usage = array;
     return this;
   }
 
@@ -81,7 +81,7 @@ class CommandRegistration {
    * @param {Array<String>} array
    */
   setExample(array) {
-    if (Validator.isArray(array)) this.example = array;
+    if (Validation.isArray(array)) this.example = array;
     return this;
   }
 

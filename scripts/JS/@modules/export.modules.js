@@ -4,10 +4,11 @@ export { Collection } from "./handlers/data/Collection.Class.js";
 export { PlayerClass } from "./handlers/entity/Player.Class.js";
 //export { EntityClass } from "./handlers/entity/Entity.Class.js";
 export { ChatClass } from "./handlers/message/Chat.Class.js";
-export { FailedClass } from "./handlers/message/Failed.Class.js"
+export { FailedClass } from "./handlers/message/Failed.Class.js";
 
 export { Database } from "./storages/Database.Class.js";
 
 export { CooldownClass } from "./utils/Cooldown.Class.js";
+export * as Formatter from "./utils/Formatter.Function.js";
 export * as Timer from "./utils/Timer.Function.js";
 export * as Validation from "./utils/Validation.Function.js";
