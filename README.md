@@ -2,7 +2,7 @@
 
 [![Discord](https://img.shields.io/discord/898202806052347984?color=blue&label=Discord&style=for-the-badge)](https://discord.gg/g4EJ38HZ7R)
 [![YouTube](https://img.shields.io/youtube/channel/subscribers/UC9gjEs8-syrZcgftpm3gsyQ?label=YouTube&style=for-the-badge)](https://youtube.com/@JustSkyDev)
-[![GitHub Releases (by Asset)](https://img.shields.io/github/downloads/JustSkyDev/JustSky-API/latest/total?style=for-the-badge)
+[![GitHub Releases](https://img.shields.io/github/downloads/JustSkyDev/JustSky-API/total?style=for-the-badge)
 ](https://github.com/JustSkyDev/JustSky-API/releases/latest)
 
 <br>
