@@ -4,9 +4,8 @@ import * as API from "../class.chain.js";
 
 world.beforeEvents.chatSend.subscribe(async (data) => {
   const { message, sender } = data;
-  if (message.startsWith(API.Prefix)) return;
+  if (message.startsWith(API.Command.getPrefix())) return;
   data.cancel = true;
-  const cooldown = new API.CooldownClass();
   const getRankTag =
     sender
       .getTags()

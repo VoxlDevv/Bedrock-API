@@ -36,9 +36,10 @@ class Database {
     } catch {
       world.scoreboard
         .getObjective(`DB_${this.DB_NAME}`)
-        .getParticipants()
+        ?.getParticipants()
         .forEach((results) => {
-          const parsedData = JSON.parse(results.displayName);
+          const cleanData = results.displayName.slice(1, -1);
+          const parsedData = cleanData.split(",");
           const decryptKey = Formatter.DecryptText(parsedData[0]);
           const decryptValue = Formatter.DecryptText(parsedData[1]);
           this.RESTORED_DATA.set(decryptKey, decryptValue);
