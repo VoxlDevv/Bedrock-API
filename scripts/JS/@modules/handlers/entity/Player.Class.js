@@ -7,6 +7,7 @@ class PlayerClass {
    */
   constructor(playerObject) {
     this.playerObject = playerObject;
+    if (!playerObject) throw new Error("PlayerObject cannot be empty");
   }
 
   /**

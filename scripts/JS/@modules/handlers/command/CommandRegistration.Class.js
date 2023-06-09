@@ -5,13 +5,21 @@ class CommandRegistration {
    * Command registration
    */
   constructor() {
+    /**@private */
     this.name = "";
+    /**@private */
     this.description = "No Description";
+    /**@private */
     this.private = false;
+    /**@private */
     this.category = "";
+    /**@private */
     this.requireTags = [];
+    /**@private */
     this.aliases = [];
+    /**@private */
     this.usage = [];
+    /**@private */
     this.example = [];
   }
   /**

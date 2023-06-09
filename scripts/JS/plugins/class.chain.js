@@ -1,6 +1,5 @@
 export {
   Command,
-  Prefix,
   CommandRegistration,
   Collection,
   PlayerClass,

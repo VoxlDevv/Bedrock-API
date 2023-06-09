@@ -4,7 +4,9 @@ class CooldownClass {
    * @param {String} name - Cooldown name
    */
   constructor(name) {
+    /**@private */
     this.cooldowns = new Map();
+    /**@private */
     this.name = name;
   }
 

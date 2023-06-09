@@ -1,22 +1,24 @@
 import { world } from "@minecraft/server";
-import {
-  Collection,
-  Database,
-  CommandRegistration,
-  FailedClass,
-} from "../../export.modules.js";
+import { Collection } from "../data/Collection.Class.js";
+import { FailedClass } from "../message/Failed.Class.js";
+import { Database } from "../../storages/Database.Class.js";
 import { Config } from "../../../config.js";
-
-const DB = new Database("GlobalDB");
-const Prefix = DB.get("commandPrefix") ?? Config.defaultPrefix;
 
 class CommandClass {
   /**
    * Custom Command
    */
   constructor() {
+    /**@private */
     this.registration = new Collection();
+    /**@private */
     this.failed = new FailedClass();
+    /**@private */
+    this.db = new Database("GlobalDB");
+    /**@private */
+    this.commandPrefix = this.db.get("commandPrefix") ?? Config.defaultPrefix;
+
+    /**@private */
     world.beforeEvents.chatSend.subscribe(this.execute.bind(this));
   }
 
@@ -37,10 +39,10 @@ class CommandClass {
    * Get command
    * @private
    */
-  getCommand(command) {
+  getCommand(commandName) {
     return (
-      this.registration.get(command) ||
-      this.registration.find((als) => als?.aliases?.includes(command))
+      this.registration.get(commandName) ||
+      this.registration.find((als) => als?.aliases.includes(commandName))
     );
   }
 
@@ -53,37 +55,42 @@ class CommandClass {
   }
 
   /**
+   * Get command prefix
+   * @returns {String}
+   */
+  getPrefix() {
+    return this.commandPrefix;
+  }
+
+  /**
    * Execute
    * @private
    */
   execute(packet) {
     const { message, sender } = packet;
-    if (!message.startsWith(Prefix)) return;
+    if (!message.startsWith(this.commandPrefix)) return;
 
     packet.cancel = true;
     const args = message
-      .slice(Prefix.length)
+      .slice(this.commandPrefix.length)
       .trim()
       .match(/"[^"]+"|\S+/g)
       .map((e) => e.replace(/"/g, ""));
-    const commandName = args.shift().toLowerCase();
-    const commandGet = this.getCommand(commandName);
+    const commandArgs = args.shift().toLowerCase();
+    const commandName = this.getCommand(commandArgs);
 
-    if (!commandGet || (commandGet.private && !sender.isOp())) {
-      this.failed.InvalidCommand(sender, commandName);
+    if (!commandName || (commandName.private && !sender.isOp())) {
+      this.failed.InvalidCommand(sender, commandArgs);
     }
     if (
-      commandGet.requireTags.length > 0 &&
-      !commandGet.requireTags.every((i) => sender.getTags().includes(i))
+      commandName.requireTags.length > 0 &&
+      !commandName.requireTags.every((i) => sender.getTags().includes(i))
     ) {
-      this.failed.InvalidCommand(sender, commandName);
+      this.failed.InvalidCommand(sender, commandArgs);
     }
 
     commandGet.callback({
-      DB: {
-        used: DB,
-        primitive: Database,
-      },
+      DB: this.db,
       raw: packet,
       sender,
       args,
@@ -94,4 +101,4 @@ class CommandClass {
 }
 
 const Command = new CommandClass();
-export { Command, Prefix };
+export { Command };

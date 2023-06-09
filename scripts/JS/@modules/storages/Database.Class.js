@@ -1,9 +1,9 @@
 import { system, world } from "@minecraft/server";
 import {
-  ChatClass,
   Collection,
-  Formatter,
   Validation,
+  Formatter,
+  ChatClass,
 } from "../export.modules.js";
 
 class Database {
@@ -12,8 +12,11 @@ class Database {
    * @param {String} name - Database name
    */
   constructor(name) {
+    /**@private */
     this.DB_NAME = name;
+    /**@private */
     this.DB_SAVED_NAMES = [];
+    /**@private */
     this.RESTORED_DATA = new Collection();
 
     if (!name) throw new Error("Database name cannot be empty");

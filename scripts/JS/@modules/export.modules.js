@@ -1,4 +1,4 @@
-export { Command, Prefix } from "./handlers/command/Command.Class.js";
+export { Command } from "./handlers/command/Command.Class.js";
 export { CommandRegistration } from "./handlers/command/CommandRegistration.Class.js";
 export { Collection } from "./handlers/data/Collection.Class.js";
 export { PlayerClass } from "./handlers/entity/Player.Class.js";
