@@ -1,5 +1,10 @@
 import { system, world } from "@minecraft/server";
-import { ChatClass, Formatter, Validation } from "../export.modules.js";
+import {
+  ChatClass,
+  Collection,
+  Formatter,
+  Validation,
+} from "../export.modules.js";
 
 class Database {
   /**
@@ -9,7 +14,8 @@ class Database {
   constructor(name) {
     this.DB_NAME = name;
     this.DB_SAVED_NAMES = [];
-    this.RESTORED_DATA = {};
+    this.RESTORED_DATA = new Collection();
+
     if (!name) throw new Error("Database name cannot be empty");
 
     if (this.DB_SAVED_NAMES.includes(name))
@@ -20,9 +26,11 @@ class Database {
         "Database names can't be more than 13 characters or empty"
       );
 
+    this.DB_SAVED_NAMES.push(name);
+
     try {
       world.scoreboard.addObjective(`DB_${this.DB_NAME}`, `DB_${this.DB_NAME}`);
-    } catch (error) {
+    } catch {
       world.scoreboard
         .getObjective(`DB_${this.DB_NAME}`)
         .getParticipants()
@@ -53,7 +61,7 @@ class Database {
       );
     });
 
-    this.RESTORED_DATA[key] = value;
+    this.RESTORED_DATA.set(key, value);
   }
 
   /**
@@ -62,7 +70,7 @@ class Database {
    * @returns {Object}
    */
   get(key) {
-    return this.RESTORED_DATA[key];
+    return this.RESTORED_DATA.get(key);
   }
 
   /**
@@ -84,17 +92,19 @@ class Database {
       );
     });
 
-    delete this.RESTORED_DATA[key];
+    this.RESTORED_DATA.delete(key);
   }
 
   /**
    * Reset database
    */
   reset() {
-    world.scoreboard.removeObjective(`DB_${this.DB_NAME}`);
-    world.scoreboard.addObjective(`DB_${this.DB_NAME}`, `DB_${this.DB_NAME}`);
+    system.run(() => {
+      world.scoreboard.removeObjective(`DB_${this.DB_NAME}`);
+      world.scoreboard.addObjective(`DB_${this.DB_NAME}`, `DB_${this.DB_NAME}`);
+    });
 
-    this.RESTORED_DATA = {};
+    this.RESTORED_DATA.clear();
   }
 
   /**
@@ -102,7 +112,7 @@ class Database {
    * @returns {Object}
    */
   getValues() {
-    return Object.values(this.RESTORED_DATA);
+    return this.RESTORED_DATA.values();
   }
 
   /**
@@ -110,7 +120,7 @@ class Database {
    * @returns {Object}
    */
   getKeys() {
-    return Object.keys(this.RESTORED_DATA);
+    return this.RESTORED_DATA.keys();
   }
 
   /**
@@ -119,17 +129,15 @@ class Database {
    * @returns {Boolean}
    */
   hasKey(key) {
-    return this.RESTORED_DATA.hasOwnProperty(key);
+    return this.RESTORED_DATA.has(key);
   }
 
   /**
-   * forEach
-   * @param {Function} cb
+   * Entries
    */
-  forEach(cb) {
-    this.getKeys().forEach((key) => cb(key, this.RESTORED_DATA[key]));
+  entries() {
+    return this.RESTORED_DATA.entries();
   }
-
   /**
    * Iterator
    */
@@ -137,7 +145,5 @@ class Database {
     yield* this.RESTORED_DATA.entries();
   }
 }
-
-new Database();
 
 export { Database };
