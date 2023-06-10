@@ -65,11 +65,11 @@ class PlayerClass {
   /**
    * Check player if online
    * @returns {Boolean}
-   * @example isOnline(targetObj);
+   * @example isOnline("JustSky001");
    */
   isOnline(target) {
     return (
-      this.getAllPlayers().find((name) => name === target.nameTag) !== undefined
+      this.getAllPlayers().find((name) => name === target) !== undefined
     );
   }
 
