@@ -25,6 +25,9 @@
 ## ⚙️ Experimental toggle 
 - Turn on the **Beta Api's** toggle in Experiments menu
 
+## 🔧 Installation
+- **It is recommended to put API folder to** `development_behavior_pack`, **every time you reload the world or run the /reload command, the API will automatically reload**
+
 ## 🛠️ Example usage
 - **Command Builder**
 - **PATH** PATH/Custom Command/yourCommand.js
