@@ -1,3 +1,5 @@
+import { setTickTimeout } from "./Timer.Function.js";
+
 class CooldownClass {
   /**
    * Cooldown system
@@ -5,42 +7,43 @@ class CooldownClass {
    */
   constructor(name) {
     /**@private */
-    this.cooldowns = new Map();
-    /**@private */
     this.name = name;
+    /**@private */
+    this.endTime = null;
   }
 
   /**
-   * Start the cooldown
-   * @param {Number} duration - Duration
+   * Start cooldown
+   * @param {Number} duration - Duration in seconds
    */
   start(duration) {
-    const endTime = Date.now() + duration * 1000;
-    this.cooldowns.set(this.name, endTime);
+    if (this.isActive()) return;
+
+    this.endTime = Date.now() + duration * 1000;
+
+    setTickTimeout(() => {
+      this.endTime = null;
+    }, duration * 20);
   }
 
   /**
-   * Check if cooldown is active
+   * Check cooldown
    * @returns {Boolean}
    */
   isActive() {
-    const endTime = this.cooldowns.get(this.name);
-    if (!endTime) {
-      return false;
-    }
-    return Date.now() < endTime;
+    return this.endTime !== null && this.endTime > Date.now();
   }
 
   /**
-   * Get cooldown time left
+   * Get cooldown time remaining
    * @returns {Number}
    */
-  getTime() {
-    const endTime = this.cooldowns.get(this.name);
-    if (!endTime) {
-      return 0;
+  getCooldown() {
+    if (this.isActive()) {
+      const remainingTime = Math.max(0, this.endTime - Date.now());
+      return Math.round(remainingTime / 1000);
     }
-    return Math.max(0, endTime - Date.now());
+    return 0;
   }
 }
 

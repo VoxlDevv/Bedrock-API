@@ -7,8 +7,8 @@
 
 const pluginFolder = [
   // Import Plugin (Folder Name)
-  "Chat Rank",
-  "Custom Command",
+  "Chat Ranks",
+  "Custom Commands",
 ];
 
 

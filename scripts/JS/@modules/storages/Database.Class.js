@@ -1,10 +1,9 @@
 import { system, world } from "@minecraft/server";
-import {
-  Collection,
-  Validation,
-  Formatter,
-  ChatClass,
-} from "../export.modules.js";
+import { Collection } from "../handlers/data/Collection.Class.js";
+import { ChatClass } from "../handlers/message/Chat.Class.js";
+import { ErrorClass } from "../handlers/message/Error.Class.js";
+import * as Validation from "../utils/Validation.Function.js";
+import * as Formatter from "../utils/Formatter.Function.js";
 
 class Database {
   /**
@@ -18,14 +17,27 @@ class Database {
     this.DB_SAVED_NAMES = [];
     /**@private */
     this.RESTORED_DATA = new Collection();
+    /**@private */
+    this.error = new ErrorClass();
 
-    if (!name) throw new Error("Database name cannot be empty");
+    if (!name)
+      this.error.CustomError(
+        "Database",
+        "constructor",
+        "Database name cannot be empty"
+      );
 
     if (this.DB_SAVED_NAMES.includes(name))
-      throw new Error(`Database with name ${name} already exist`);
+      this.error.CustomError(
+        "Database",
+        "constructor",
+        `Database with name ${name} already exist`
+      );
 
     if (name.length > 13 || name.length === 0)
-      throw new Error(
+      this.error.CustomError(
+        "Database",
+        "constructor",
         "Database names can't be more than 13 characters or empty"
       );
 
@@ -54,7 +66,7 @@ class Database {
    */
   set(key, value) {
     if (!Validation.isString(value))
-      throw new Error("Database::set value must be string");
+      this.error.CustomError("Database", "set", "value must be string");
 
     const encryptKey = Formatter.EncryptText(key);
     const encryptValue = Formatter.EncryptText(value);

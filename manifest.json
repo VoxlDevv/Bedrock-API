@@ -1,10 +1,10 @@
 {
   "format_version": 2,
   "header": {
-    "name": "§eJSAPI",
+    "name": "§eJSBedrock-API",
     "description": "§cMade By §fJustSkyDev(YouTube)",
     "uuid": "405e8f7a-db2d-11ed-afa1-0242ac120002",
-    "version": [1, 0, 0],
+    "version": [1, 0, 1],
     "min_engine_version": [1, 20, 0]
   },
   "modules": [

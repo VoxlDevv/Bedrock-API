@@ -1,20 +1,20 @@
-import * as API from "../../class.chain.js";
+import { Command, CommandRegistration, Validation } from "../../class.chain.js";
 
-const registration = new API.CommandRegistration()
+const registration = new CommandRegistration()
   .setName("help")
   .setDescription("Help command")
   .setCategory("Built-in")
   .setAliases(["?", "h"])
-  .setUsage(["<number|string|null>"])
+  .setUsage(["<page: CommandName|number|null>"])
   .setExample(["help ping", "help 1", "help"]);
 
 const PAGE_LIMIT = 12;
 
-API.Command.BuildCommand(registration, (interaction) => {
+Command.BuildCommand(registration, (interaction) => {
   const { sender, args, allCommandRegistration } = interaction;
 
-  if (isNaN(args[0]) && args[0] !== undefined) {
-    const item = API.Command.getCommand(args[0]);
+  if (isNaN(args[0]) && !Validation.isUndefined(args[0])) {
+    const item = Command.getCommand(args[0]);
 
     if (!item)
       return sender.sendMessage(
@@ -24,21 +24,22 @@ API.Command.BuildCommand(registration, (interaction) => {
     return sender.sendMessage(
       `§bName: §f${item.name}\n§bDescription: §f${
         item.description
-      }\n§bCategory: §f${item.category ?? "No category"}\n§bAliases: §f${
-        item.aliases ?? "No aliases"
-      }\n§bUsage: ${item.usage || "No usage"}`
+      }\n§bCategory: §f${item.category}\n§bAliases: §f${
+        item.aliases?.join(", ") || "No aliases"
+      }\n§bUsage: ${item.usage?.join(", ") || "No usage"}`
     );
   } else {
     const startIndex = ((args[0] ?? 1) - 1) * PAGE_LIMIT;
     const endIndex = (args[0] ?? 1) * PAGE_LIMIT;
-    const items = Array.from(allCommandRegistration.values()).slice(
-      startIndex,
-      endIndex
-    );
+    const items = Array.from(allCommandRegistration.values())
+      .slice(startIndex, endIndex)
+      .filter((command) => !command.private)
+      .sort((a, b) => a.name.localeCompare(b.name));
 
     let messages = "";
     let currentCategory = "";
 
+    messages += `§aShowing page\n\n`;
     messages += items
       .map((item) => {
         let categoryLine = "";
@@ -46,7 +47,7 @@ API.Command.BuildCommand(registration, (interaction) => {
           categoryLine = `§e${item.category}:\n`;
           currentCategory = item.category;
         }
-        return `§a${categoryLine} §a${API.Command.getPrefix()}${item.name}: ${
+        return `§a${categoryLine} §a${Command.getPrefix()}${item.name}: ${
           item.description
         }`;
       })
@@ -57,15 +58,14 @@ API.Command.BuildCommand(registration, (interaction) => {
         PAGE_LIMIT
       );
       if (remainingItems.length > 0) {
-        messages +=
-          "\n§eTo view the next page, use §fhelp 2 §eor §fhelp 3§e, and so on";
+        messages += `\n§eTo view the next page, use §f${Command.getPrefix()}help 2 §eor §f${Command.getPrefix()}help 3§e, and so on`;
       }
     } else {
       const remainingItems = Array.from(allCommandRegistration.values()).slice(
         endIndex
       );
       if (remainingItems.length > 0) {
-        messages += `\n§eTo view the next page, use §fhelp ${
+        messages += `\n§eTo view the next page, use §f${Command.getPrefix()}help ${
           (args[0] ?? 1) + 1
         }`;
       }

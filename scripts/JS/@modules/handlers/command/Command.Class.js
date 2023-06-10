@@ -2,6 +2,8 @@ import { world } from "@minecraft/server";
 import { Collection } from "../data/Collection.Class.js";
 import { FailedClass } from "../message/Failed.Class.js";
 import { Database } from "../../storages/Database.Class.js";
+import { ErrorClass } from "../message/Error.Class.js";
+import * as Validation from "../../utils/Validation.Function.js";
 import { Config } from "../../../config.js";
 
 class CommandClass {
@@ -13,6 +15,8 @@ class CommandClass {
     this.registration = new Collection();
     /**@private */
     this.failed = new FailedClass();
+    /**@private */
+    this.error = new ErrorClass();
     /**@private */
     this.db = new Database("GlobalDB");
     /**@private */
@@ -60,6 +64,28 @@ class CommandClass {
    */
   getPrefix() {
     return this.commandPrefix;
+  }
+
+  /**
+   * Set command prefix
+   * @param {String} prefix
+   */
+  setPrefix(prefix) {
+    if (!prefix)
+      this.error.CustomError(
+        "CommandClass",
+        "setPrefix",
+        "prefix cannot be empty"
+      );
+
+    if (!Validation.isString(prefix))
+      this.error.CustomError(
+        "CommandClass",
+        "setPrefix",
+        "prefix must be string"
+      );
+
+    this.db.set("currentPrefix", prefix);
   }
 
   /**

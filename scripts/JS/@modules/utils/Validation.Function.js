@@ -54,6 +54,41 @@ function isArray(array) {
   return Array.isArray(array);
 }
 
-export { isString, isNumber, isInteger, isBoolean, isObject, isArray };
+/**
+ * Check if null
+ * @param {Object} object
+ * @returns
+ */
+function isNull(object) {
+  return object === null;
+}
 
-// world.scoreboard.getParticipants().find((sb) => sb.displayName == player)
+/**
+ * Check if undefined
+ * @param {Object} object
+ * @returns
+ */
+function isUndefined(object) {
+  return object === undefined;
+}
+
+/**
+ * Check if error
+ * @param {Error} error
+ * @returns
+ */
+function isError(error) {
+  return error instanceof Error && "message" in error;
+}
+
+export {
+  isString,
+  isNumber,
+  isInteger,
+  isBoolean,
+  isObject,
+  isArray,
+  isNull,
+  isUndefined,
+  isError,
+};

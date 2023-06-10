@@ -1,4 +1,4 @@
-import { Validation } from "../../export.modules.js";
+import * as Validation from "../../utils/Validation.Function.js";
 
 class CommandRegistration {
   /**
@@ -12,15 +12,15 @@ class CommandRegistration {
     /**@private */
     this.private = false;
     /**@private */
-    this.category = "";
+    this.category = "Global";
     /**@private */
-    this.requireTags = [];
+    this.requireTags = [null];
     /**@private */
-    this.aliases = [];
+    this.aliases = [null];
     /**@private */
-    this.usage = [];
+    this.usage = [null];
     /**@private */
-    this.example = [];
+    this.example = [null];
   }
   /**
    * Set command name

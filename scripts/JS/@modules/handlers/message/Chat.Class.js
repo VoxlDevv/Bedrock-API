@@ -1,10 +1,11 @@
-import { world } from "@minecraft/server";
+import { Player, world } from "@minecraft/server";
+import { ErrorClass } from "./Error.Class.js";
 
 class ChatClass {
   /**
    * Broadcast message in chat
    * @param {Object} rawtext - The text must be Object
-   * @param {String} player - Player name (Optional)
+   * @param {Player|Player.nameTag} player - Player name (Optional)
    * @returns {any}
    * @example broadcast({ text: "Hello world!" });
    */
@@ -24,6 +25,13 @@ class ChatClass {
    * @example runCommand("say Hello world!");
    */
   runCommand(command, dimension = "overworld", debugMode = false) {
+    if (command.startsWith("/"))
+      new ErrorClass().CustomError(
+        "ChatClass",
+        "runCommand",
+        'command cannot starts with "/" at <anonymous>'
+      );
+
     return debugMode
       ? console.warn(JSON.stringify(this.runCommand(command)))
       : world.getDimension(dimension).runCommand(command);
@@ -35,6 +43,13 @@ class ChatClass {
    * @example runCommands([ "say Hello", "say World!" ]);
    */
   runCommands(commands) {
+    if (commands.some((slash) => slash.startsWith("/")))
+      new ErrorClass().CustomError(
+        "ChatClass",
+        "runCommands",
+        'commands cannot starts with "/" at <anonymous>'
+      );
+
     commands.forEach((cmd) => {
       this.runCommand(cmd);
     });

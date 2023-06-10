@@ -2,8 +2,9 @@ export { Command } from "./handlers/command/Command.Class.js";
 export { CommandRegistration } from "./handlers/command/CommandRegistration.Class.js";
 export { Collection } from "./handlers/data/Collection.Class.js";
 export { PlayerClass } from "./handlers/entity/Player.Class.js";
-//export { EntityClass } from "./handlers/entity/Entity.Class.js";
+export { EntityClass } from "./handlers/entity/Entity.Class.js";
 export { ChatClass } from "./handlers/message/Chat.Class.js";
+export { ErrorClass } from "./handlers/message/Error.Class.js";
 export { FailedClass } from "./handlers/message/Failed.Class.js";
 
 export { Database } from "./storages/Database.Class.js";

@@ -4,6 +4,7 @@ export {
   Collection,
   PlayerClass,
   ChatClass,
+  ErrorClass,
   FailedClass,
   Database,
   CooldownClass,

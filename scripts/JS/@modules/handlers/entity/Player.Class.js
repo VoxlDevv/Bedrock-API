@@ -1,13 +1,25 @@
 import { world, Player } from "@minecraft/server";
+import { EntityClass } from "./Entity.Class.js";
+import { ErrorClass } from "../message/Error.Class.js";
 
-class PlayerClass {
+class PlayerClass extends EntityClass {
   /**
    * Player class
    * @param {Player} playerObject - Player object
    */
   constructor(playerObject) {
+    super(playerObject);
+    /**@private */
     this.playerObject = playerObject;
-    if (!playerObject) throw new Error("PlayerObject cannot be empty");
+    /**@private */
+    this.error = new ErrorClass();
+
+    if (!playerObject)
+      this.error.CustomError(
+        "PlayerClass",
+        "constructor",
+        "PlayerObject cannot be empty"
+      );
   }
 
   /**
@@ -34,42 +46,15 @@ class PlayerClass {
   }
 
   /**
-   * Get player specific tag
-   * @returns {Boolean|String}
-   * @example getSpecificTag("tag:");
-   */
-  getSpecificTag(startswith) {
-    const check = this.getTags()?.find((tag) => tag.startsWith(startswith));
-    return check ? check : false;
-  }
-
-  /**
-   * Get player all tag
-   * @returns {Array<String>}
-   * @example getTags();
-   */
-  getTags() {
-    return this.playerObject.getTags();
-  }
-
-  /**
-   * Check player if had tag
-   * @param {String} tag - Tag
-   * @returns {Boolean}
-   * @example hasTag("tag");
-   */
-  hasTag(tag) {
-    return this.playerObject.hasTag(tag);
-  }
-
-  /**
    * Check player if online
+   * @param {Player.nameTag} target - Player nametag
    * @returns {Boolean}
    * @example isOnline("JustSky001");
    */
   isOnline(target) {
     return (
-      this.getAllPlayers().find((name) => name === target) !== undefined
+      this.getAllPlayers().find((player) => player.nameTag === target) !==
+      undefined
     );
   }
 
