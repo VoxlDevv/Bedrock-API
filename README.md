@@ -11,46 +11,78 @@
 
 `JustSky-API` is an API based on the Scripting API in Minecraft bedrock, this API is very easy to use
 
-`Support Version: Minecraft Bedrock 1.20 official`
+`Default Command Prefix`: **!**
 
+## 💎 Features
+- **Easy-to-use**
+- **Fast**
+- **Built-in plugins (Custom Commands and Chat Ranks)**
+- **Include Database, Collection (Map Extension)**
+- **Include Command Builder, PlayerClass, EntityClass, ChatClass**
+- **Include Formatter, Validation, Timer, CooldownClass**
+- **ETC**
 
-<br/>
+## ⚙️ Experimental toggle 
+- Turn on the **Beta Api's** toggle in Experiments menu
 
-## 🧾 Experimental toggle 
-- Turn on the "Beta Api's" toggle in Experiments menu
-
-#### ⚙️ Creating custom command example 
+## 🛠️ Example usage
+- **Command Builder**
+- **PATH** PATH/Custom Command/yourCommand.js
 
 ```javascript
-import * as API from "../class.chain.js";
+// Import these two Class
+import { Command, CommandRegistration } from "../class.chain.js";
 
-const registration = new API.CommandRegistration()
-  .setName("example") // Set command name (required)
-  .setDescription("Example description") // Set command description (optional)
-  .setCategory("Example") // Set command category (optional)
-  .setAliases(["ex"]) // Set command aliases (optional)
-  .setPrivate(true) // Set command to Operator only (optional)
-  .setRequireTags(["example"]) // If player had "example" tag, player can run the command (optional)
-  .setExample(["example"]) // Set command example use (optional)
-  .setUsage(["example"]); // Set command usage (optional)
-  
-API.Command.BuildCommand(registration, (context) => {
-  // Code here
+// Create the registration information 
+const registration = new CommandRegistration()
+  .setName("yourcommandname") // Command name
+  .setDescription("Command description")
+  .setAliases(["y"]) // Command aliases
+  .setCategory("Custom"); // Command category
+
+// Build the command
+Command.BuildCommand(registration, (interaction) => {
+  // Interaction list
+  const { DB, raw, sender, args, allCommandRegistration } = interaction;
+  /**
+    * DB is Database
+    * raw is Raw packet from ChatSendEvent
+    * sender is Who send the command
+    * args is Arguments, like player send command !help 2, args[0] would be "2"
+    * allCommandRegistration is Get all command registration from Command Builder
+    */
 });
 ```
 
-#### 📁 Database usage example 
-
+- **Database**
 ```javascript
-import * as API from "../class.chain.js";
-
-const DB = new API.Database("DBNAME"); // Create database
-DB.set("foo", "bar"); // Set data to database "foo" is key, and "bar" is value
-DB.get("foo"); // Get data from database, "foo" is key, return "bar"
+const DB = new Database("dbName"); // Create new database with name "dbName"
+db.set("key", "value"); // Set data to database
+db.get("key); // Get data from database, this would return "value"
 ```
+
+- **Collection**
+```javascript
+const collect = new Collection(); // Create new collection
+collect.set("key", "value"); // Set data to collection
+collect.get("key"); // Get data from collection 
+```
+
+- **Entity & Player Class**
+```javascript
+// Entity coming soon 
+
+// Player 
+const player = new PlayerClass(playerObject);
+const score = player.getScore("money");
+const isOnline = player.isOnline("playerName");
+```
+
+## 📑 Note
+- **If you found bug or need more features, you can create/open Issues or Pull Request**
 
 <br/>
 
-## ⭐Star History
+## ⭐ Star 
 
 [![Star History Chart](https://api.star-history.com/svg?repos=JustSkyDev/JustSky-API&type=Date)](https://star-history.com/#JustSkyDev/JustSky-API&Date) 
