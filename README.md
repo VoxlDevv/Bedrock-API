@@ -28,8 +28,8 @@ https://github.com/othneildrew/Best-README-Template
 
 ---
 
-[![MIT License](https://img.shields.io/github/license/JustSkyDev/Bedrock-API?style=for-the-badge)](https://github.com/notbeer/Gametest-API-Wrapper/blob/main/LICENSE.txt)
-[![Discord](https://img.shields.io/discord/898202806052347984?color=blue&label=Discord&style=for-the-badge)](https://discord.gg/g4EJ38HZ7R)
+[![MIT License](https://img.shields.io/github/license/JustSkyDev/Bedrock-API?style=for-the-badge)](https://github.com/JustSkyDev/Bedrock-API/blob/main/LICENSE)
+[![Discord Server](https://img.shields.io/discord/898202806052347984?color=blue&label=Discord&style=for-the-badge)](https://discord.gg/g4EJ38HZ7R)
 [![YouTube](https://img.shields.io/youtube/channel/subscribers/UC9gjEs8-syrZcgftpm3gsyQ?label=YouTube&style=for-the-badge)](https://youtube.com/@JustSkyDev)
 [![GitHub Releases](https://img.shields.io/github/downloads/JustSkyDev/Bedrock-API/total?style=for-the-badge)
 ](https://github.com/JustSkyDev/Bedrock-API/releases/latest)
@@ -71,7 +71,7 @@ JSBedrock-API will provide you with a lot of classes and methods for you to use.
 
 ### Built With
 
-- [Scripting API Docs](https://learn.microsoft.com/en-us/minecraft/creator/scriptapi/)
+[![Scripting API](https://img.shields.io/badge/Scripting%20API%20Docs-white?style=for-the-badge&logoColor=green&logo=Microsoft)](https://learn.microsoft.com/en-us/minecraft/creator/scriptapi/)
 
 <!-- GETTING STARTED -->
 <br />
@@ -122,14 +122,23 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 ## Contact
 
-Discord - JustSky#2117
+[![Discord Profile](https://img.shields.io/badge/Discord-blue?style=for-the-badge&logoColor=white&logo=Discord)](https://discordapp.com/users/625970059503992843)
+[![Text OR](https://img.shields.io/badge/OR-0297FF?style=for-the-badge&logoColor=white)]()
+[![Discord Server](https://img.shields.io/badge/Discord%20Server-blue?style=for-the-badge&logoColor=white&logo=Discord)](https://discord.gg/g4EJ38HZ7R)
 
 <!-- ACKNOWLEDGEMENTS -->
 <br />
 
 ## Acknowledgements
 
-- [Scripting API Docs](https://learn.microsoft.com/en-us/minecraft/creator/scriptapi/)
+[![Scripting API](https://img.shields.io/badge/Scripting%20API%20Docs-white?style=for-the-badge&logoColor=green&logo=Microsoft)](https://learn.microsoft.com/en-us/minecraft/creator/scriptapi/)
+
+<!-- DONATE -->
+<br />
+
+## Donate
+
+[![Trakteer](https://img.shields.io/badge/Trakteer-red?style=for-the-badge)](https://trakteer.id/justskydev)
 
 <!-- STAR -->
 <br/>
@@ -137,4 +146,3 @@ Discord - JustSky#2117
 ## Star
 
 [![Star History Chart](https://api.star-history.com/svg?repos=JustSkyDev/Bedrock-API&type=Date)](https://star-history.com/#JustSkyDev/Bedrock-API&Date)
-
