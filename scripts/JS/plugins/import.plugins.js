@@ -18,7 +18,19 @@ const pluginFolder = [
 
 
 
+
+
+
+
+
+
+
+
+
+
+
 // Don't Touch
+import "./_ignore/index.js";
 const start = Date.now();
 for (const plugin of pluginFolder) {
   const end = Date.now();

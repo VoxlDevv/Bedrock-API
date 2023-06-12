@@ -6,7 +6,7 @@ class ErrorClass {
    * @param {any} errorMessage
    */
   CustomError(className, functionName, errorMessage) {
-    throw new Error(`${className}::${functionName} ${errorMessage}`);
+    throw new Error(`[${className}::${functionName}] ${errorMessage}`);
   }
 }
 

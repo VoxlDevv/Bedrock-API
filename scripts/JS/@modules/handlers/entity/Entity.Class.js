@@ -58,6 +58,10 @@ class EntityClass {
     const check = this.getTags()?.find((tag) => tag.startsWith(startswith));
     return check ? check : false;
   }
+
+  getEmptySlot() {
+    const inventory  = this.entity
+  }
 }
 
 export { EntityClass };

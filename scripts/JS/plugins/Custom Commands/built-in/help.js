@@ -25,8 +25,10 @@ Command.BuildCommand(registration, (interaction) => {
       `§bName: §f${item.name}\n§bDescription: §f${
         item.description
       }\n§bCategory: §f${item.category}\n§bAliases: §f${
-        item.aliases?.join(", ") || "No aliases"
-      }\n§bUsage: ${item.usage?.join(", ") || "No usage"}`
+        item.aliases.length === 0 ? "No aliases" : this.aliases.join(", ")
+      }\n§bUsage: ${
+        item.usage.length === 0 ? "No usage" : this.usage.join(", ")
+      }`
     );
   } else {
     const startIndex = ((args[0] ?? 1) - 1) * PAGE_LIMIT;
@@ -35,11 +37,12 @@ Command.BuildCommand(registration, (interaction) => {
       .slice(startIndex, endIndex)
       .filter((command) => !command.private)
       .sort((a, b) => a.name.localeCompare(b.name));
+    const maxPages = Math.ceil(items.length / PAGE_LIMIT);
 
     let messages = "";
     let currentCategory = "";
 
-    messages += `§aShowing page\n\n`;
+    messages += `§a--- Showing page ${args[0] ?? 1} of ${maxPages} ---\n\n`;
     messages += items
       .map((item) => {
         let categoryLine = "";

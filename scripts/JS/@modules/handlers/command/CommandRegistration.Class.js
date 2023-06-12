@@ -14,13 +14,15 @@ class CommandRegistration {
     /**@private */
     this.category = "Global";
     /**@private */
-    this.requireTags = [null];
+    this.requireTags = [];
     /**@private */
-    this.aliases = [null];
+    this.aliases = [];
     /**@private */
-    this.usage = [null];
+    this.usage = [];
     /**@private */
-    this.example = [null];
+    this.example = [];
+    /**@private */
+    this.inputs = {};
   }
   /**
    * Set command name
@@ -94,6 +96,17 @@ class CommandRegistration {
   }
 
   /**
+   * Set command input
+   * @param {Object} inputs
+   */
+  setInputs(inputs) {
+    const inputTypes = ["number", "string", "boolean", "player"];
+    if (Validation.isObject(inputs) && inputTypes.includes(inputs))
+      Object.assign(this.inputs, inputs);
+    return this;
+  }
+
+  /**
    * Extract to JSON
    * @private
    */
@@ -107,6 +120,7 @@ class CommandRegistration {
       aliases: this.aliases,
       usage: this.usage,
       example: this.example,
+      inputs: this.inputs,
     };
   }
 }

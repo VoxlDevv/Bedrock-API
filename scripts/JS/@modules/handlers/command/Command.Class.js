@@ -104,6 +104,7 @@ class CommandClass {
       .map((e) => e.replace(/"/g, ""));
     const commandArgs = args.shift().toLowerCase();
     const commandName = this.getCommand(commandArgs);
+    const commandInput = commandName.inputs;
 
     if (
       !commandName ||
@@ -114,10 +115,27 @@ class CommandClass {
       this.failed.InvalidCommand(sender, commandArgs);
     } else
       commandName?.callback({
-        DB: this.db,
+        DB: {
+          used: this.db,
+        },
+        inputs: {
+          getInput: (inputNumber) => {
+            const inputTypes = ["string", "boolean", "number", "player"];
+            const getTypes = commandInput[inputNumber];
+            const inputValue = args[inputNumber];
+
+            for (let i = 0; i < getTypes.length; i++) {
+              const type = getTypes[i];
+              if (type === "player" && inputValue && inputValue.startsWith("@"))
+                return inputValue.substring(1);
+              if (inputTypes.includes(type) && typeof inputValue === type)
+                return inputValue;
+              return false;
+            }
+          },
+        },
         raw: packet,
         sender,
-        args,
         config: Config,
         allCommandRegistration: this.getAllCommands(),
       });

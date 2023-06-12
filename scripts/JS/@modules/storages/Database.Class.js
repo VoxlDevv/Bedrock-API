@@ -65,11 +65,15 @@ class Database {
    * @param {String} value - Value or data
    */
   set(key, value) {
-    if (!Validation.isString(value))
-      this.error.CustomError("Database", "set", "value must be string");
+    if (value.length >= 32000)
+      this.error.CustomError(
+        "Database",
+        "set",
+        "value length is too much, limit character is 32000 or 32k"
+      );
 
     const encryptKey = Formatter.EncryptText(key);
-    const encryptValue = Formatter.EncryptText(value);
+    const encryptValue = Formatter.EncryptText(JSON.stringify(value));
 
     system.run(() => {
       new ChatClass().runCommand(
@@ -86,7 +90,7 @@ class Database {
    * @returns {Object}
    */
   get(key) {
-    return this.RESTORED_DATA.get(key);
+    return JSON.parse(this.RESTORED_DATA.get(key));
   }
 
   /**
@@ -115,10 +119,8 @@ class Database {
    * Reset database
    */
   reset() {
-    system.run(() => {
-      world.scoreboard.removeObjective(`DB_${this.DB_NAME}`);
-      world.scoreboard.addObjective(`DB_${this.DB_NAME}`, `DB_${this.DB_NAME}`);
-    });
+    world.scoreboard.removeObjective(`DB_${this.DB_NAME}`);
+    world.scoreboard.addObjective(`DB_${this.DB_NAME}`, `DB_${this.DB_NAME}`);
 
     this.RESTORED_DATA.clear();
   }

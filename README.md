@@ -23,7 +23,7 @@ https://github.com/othneildrew/Best-README-Template
     ·
     <a href="https://github.com/JustSkyDev/Bedrock-API/issues">Bug Report</a>
     ·
-    <a href="https://github.com/JustSkyDev/Bedrock-API/pulls">Feature Request</a>
+    <a href="https://github.com/JustSkyDev/Bedrock-API/issues">Feature Request</a>
   </p>
 
 ---
@@ -71,7 +71,7 @@ JSBedrock-API will provide you with a lot of classes and methods for you to use.
 
 ### Built With
 
-[![Scripting API](https://img.shields.io/badge/Scripting%20API%20Docs-white?style=for-the-badge&logoColor=green&logo=Microsoft)](https://learn.microsoft.com/en-us/minecraft/creator/scriptapi/)
+[![Scripting API](https://img.shields.io/badge/Scripting%20API%20Docs-white?style=for-the-badge&logoColor=f25022&logo=Microsoft)](https://learn.microsoft.com/en-us/minecraft/creator/scriptapi/)
 
 <!-- GETTING STARTED -->
 <br />
@@ -84,24 +84,24 @@ Easy Method
 
 Recommended Method
 
-- Another Method would be to take the zipped folder and unzip/extract it. Take your folder and move it to the folder 'development_behavior_packs', which can be found in a path like `PATH/TO/development_behavior_packs`. This will make your life way easier, while developing this pack. It will update the content inside your game everytime you make any changes to the script. For the changes to apply you must leave and rejoin your world where the pack is applied at.
+- Another Method would be to take the zipped folder and unzip/extract it. Take your folder and move it to the folder 'development_behavior_packs', which can be found in a path like `PATH/TO/development_behavior_packs`. This will make your life way easier, while developing this pack. It will update the content inside your game everytime you make any changes to the script. For the changes to apply you must leave and rejoin your world where the pack is applied at or using command `/reload`.
 
+<!-- INSTALATION -->
 <br />
 
 ### Installation
 
-1. Clone the repo
-   ```sh
-   git clone https://github.com/JustSkyDev/Bedrock-API.git
-   ```
-   <br />
+- Go to [releases](https://github.com/JustSkyDev/Bedrock-API/releases/latest) to get stable version, clone or download this repo to get a pre-release or beta version
+
+<!-- USAGE -->
+<br />
 
 ## Usage
 
 <strong>IMPORTANT: </strong>`If you are going to apply any Scripting related scripts to your world, please make a copy of your world before you do so! I'm not responsible if anything goes wrong-`
 
 Create a new world, since Scripting API is still experimental. Make sure in your settings you have `Beta API's` in `Experiments` menu.
-I have some examples on how you can use this library. Specifically on custom commands. Type in the game chat `!help` for the list of custom commands or `!help [command name]` to get information on a specific command!
+I have some examples on how you can use this library. Specifically on custom commands. Type in the game chat `!help` or `!help [page number]` for the list of custom commands or `!help [command name]` to get information on a specific command!
 
 <!-- ROADMAP -->
 <br />
@@ -123,7 +123,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 ## Contact
 
 [![Discord Profile](https://img.shields.io/badge/Discord-blue?style=for-the-badge&logoColor=white&logo=Discord)](https://discordapp.com/users/625970059503992843)
-[![Text OR](https://img.shields.io/badge/OR-0297FF?style=for-the-badge&logoColor=white)]()
+[![Text OR](https://img.shields.io/badge/OR-e60023?style=for-the-badge)](#)
 [![Discord Server](https://img.shields.io/badge/Discord%20Server-blue?style=for-the-badge&logoColor=white&logo=Discord)](https://discord.gg/g4EJ38HZ7R)
 
 <!-- ACKNOWLEDGEMENTS -->
@@ -131,14 +131,14 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 ## Acknowledgements
 
-[![Scripting API](https://img.shields.io/badge/Scripting%20API%20Docs-white?style=for-the-badge&logoColor=green&logo=Microsoft)](https://learn.microsoft.com/en-us/minecraft/creator/scriptapi/)
+[![Scripting API](https://img.shields.io/badge/Scripting%20API%20Docs-white?style=for-the-badge&logoColor=7fba00&logo=Microsoft)](https://learn.microsoft.com/en-us/minecraft/creator/scriptapi/)
 
 <!-- DONATE -->
 <br />
 
 ## Donate
 
-[![Trakteer](https://img.shields.io/badge/Trakteer-red?style=for-the-badge)](https://trakteer.id/justskydev)
+[![Trakteer](https://img.shields.io/badge/Trakteer-ff1f4c?style=for-the-badge)](https://trakteer.id/justskydev)
 
 <!-- STAR -->
 <br/>
