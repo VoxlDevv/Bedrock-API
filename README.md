@@ -98,6 +98,8 @@ Recommended Method
 
 ## Usage
 
+[![Experimental Toggle](https://i.postimg.cc/7P5zh2FT/IMG-20230612-184034.jpg)](https://postimg.cc/9zj0NrFW)
+
 <strong>IMPORTANT: </strong>`If you are going to apply any Scripting related scripts to your world, please make a copy of your world before you do so! I'm not responsible if anything goes wrong-`
 
 Create a new world, since Scripting API is still experimental. Make sure in your settings you have `Beta API's` in `Experiments` menu.
