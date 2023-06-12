@@ -90,7 +90,7 @@ class Database {
    * @returns {Object}
    */
   get(key) {
-    return JSON.parse(this.RESTORED_DATA.get(key));
+    return this.RESTORED_DATA.get(key);
   }
 
   /**
