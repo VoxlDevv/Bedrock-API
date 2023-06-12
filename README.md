@@ -91,7 +91,7 @@ Recommended Method
 
 ### Installation
 
-- Go to [releases](https://github.com/JustSkyDev/Bedrock-API/releases/latest) to get stable version, clone or download this repo to get a pre-release or beta version
+- Go to [releases](https://github.com/JustSkyDev/Bedrock-API/releases/latest) to get stable version, clone or [download](https://github.com/JustSkyDev/Bedrock-API/archive/refs/heads/main.zip) this repo to get a pre-release or beta version
 
 <!-- USAGE -->
 <br />
@@ -138,7 +138,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 ## Donate
 
-[![Trakteer](https://img.shields.io/badge/Trakteer-ff1f4c?style=for-the-badge)](https://trakteer.id/justskydev)
+[![Trakteer](https://img.shields.io/badge/Trakteer-d12531?style=for-the-badge)](https://trakteer.id/justskydev)
 
 <!-- STAR -->
 <br/>
