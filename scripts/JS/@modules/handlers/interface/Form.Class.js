@@ -1,3 +1,4 @@
+import { Player } from "@minecraft/server";
 import {
   ActionFormData,
   ActionFormResponse,
@@ -8,12 +9,11 @@ import {
 } from "@minecraft/server-ui";
 import { ErrorClass } from "../message/Error.Class.js";
 import * as Validation from "../../utils/Validation.Function.js";
-import { Player } from "@minecraft/server";
 
 class FormClass {
   /**
    * Form class
-   * @param {ModalFormData|MessageFormData|MessageFormData} type
+   * @param {ModalFormData|MessageFormData|MessageFormData} type - Form type (action, message, modal)
    */
   constructor(type) {
     /**@private */
@@ -39,7 +39,7 @@ class FormClass {
       );
 
     /**@private */
-    this.formType = new this.typeMap[type]();
+    this.formType = new this.typeMap[type]() ?? undefined;
   }
 
   /**

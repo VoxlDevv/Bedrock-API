@@ -89,6 +89,28 @@ class CommandClass {
   }
 
   /**
+   * Get input
+   * @private
+   */
+  getInput(args, commandInput, inputNumber) {
+    if (!commandInput) return false;
+
+    const inputTypes = ["string", "boolean", "number", "player"];
+    const getTypes = commandInput[inputNumber];
+    const inputValue = args[inputNumber];
+
+    for (let i = 0; i < getTypes.length; i++) {
+      const type = getTypes[i];
+      if (type === "player" && inputValue && inputValue.startsWith("@"))
+        return inputValue.substring(1);
+      if (inputTypes.includes(type) && typeof inputValue === type)
+        return inputValue;
+    }
+
+    return false;
+  }
+
+  /**
    * Execute
    * @private
    */
@@ -104,35 +126,22 @@ class CommandClass {
       .map((e) => e.replace(/"/g, ""));
     const commandArgs = args.shift().toLowerCase();
     const commandName = this.getCommand(commandArgs);
-    const commandInput = commandName.inputs;
 
     if (
       !commandName ||
       (!!commandName?.private && !sender.isOp()) ||
       (commandName?.requireTags.length > 0 &&
         !commandName?.requireTags.every((i) => sender.getTags().includes(i)))
-    ) {
-      this.failed.InvalidCommand(sender, commandArgs);
-    } else
+    )
+      return this.failed.InvalidCommand(sender, commandArgs);
+    else
       commandName?.callback({
         DB: {
           used: this.db,
         },
         inputs: {
-          getInput: (inputNumber) => {
-            const inputTypes = ["string", "boolean", "number", "player"];
-            const getTypes = commandInput[inputNumber];
-            const inputValue = args[inputNumber];
-
-            for (let i = 0; i < getTypes.length; i++) {
-              const type = getTypes[i];
-              if (type === "player" && inputValue && inputValue.startsWith("@"))
-                return inputValue.substring(1);
-              if (inputTypes.includes(type) && typeof inputValue === type)
-                return inputValue;
-              return false;
-            }
-          },
+          getInput: (inputNumber) =>
+            this.getInput(args, commandName.inputs, inputNumber),
         },
         raw: packet,
         sender,

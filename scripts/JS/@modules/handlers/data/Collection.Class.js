@@ -1,6 +1,6 @@
 class Collection extends Map {
   /**
-   * Collection 
+   * Collection
    */
   constructor() {
     super();

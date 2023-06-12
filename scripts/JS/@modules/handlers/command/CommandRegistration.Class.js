@@ -100,9 +100,7 @@ class CommandRegistration {
    * @param {Object} inputs
    */
   setInputs(inputs) {
-    const inputTypes = ["number", "string", "boolean", "player"];
-    if (Validation.isObject(inputs) && inputTypes.includes(inputs))
-      Object.assign(this.inputs, inputs);
+    if (Validation.isObject(input)) Object.assign(this.inputs, inputs);
     return this;
   }
 

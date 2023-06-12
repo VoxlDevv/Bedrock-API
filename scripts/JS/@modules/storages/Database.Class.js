@@ -156,6 +156,7 @@ class Database {
   entries() {
     return this.RESTORED_DATA.entries();
   }
+  
   /**
    * Iterator
    */
