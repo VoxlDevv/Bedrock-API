@@ -92,22 +92,22 @@ class CommandClass {
    * Get input
    * @private
    */
-  getInput(args, commandInput, inputNumber) {
-    if (!commandInput) return false;
+  getCommandInput(args, commandInput, inputNumber) {
+    if (!commandInput) return undefined;
 
-    const inputTypes = ["string", "boolean", "number", "player"];
+    const inputTypes = ["string", "boolean", "number", "playername"];
     const getTypes = commandInput[inputNumber];
     const inputValue = args[inputNumber];
 
-    for (let i = 0; i < getTypes.length; i++) {
-      const type = getTypes[i];
-      if (type === "player" && inputValue && inputValue.startsWith("@"))
+    for (const types in getTypes) {
+      const type = getTypes[types];
+      if (type === "playername" && inputValue && inputValue.startsWith("@"))
         return inputValue.substring(1);
       if (inputTypes.includes(type) && typeof inputValue === type)
         return inputValue;
     }
 
-    return false;
+    return undefined;
   }
 
   /**
@@ -141,7 +141,7 @@ class CommandClass {
         },
         inputs: {
           getInput: (inputNumber) =>
-            this.getInput(args, commandName.inputs, inputNumber),
+            this.getCommandInput(args, commandName.inputs, inputNumber),
         },
         raw: packet,
         sender,

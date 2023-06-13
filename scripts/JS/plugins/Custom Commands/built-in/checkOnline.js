@@ -2,6 +2,7 @@ import {
   Command,
   CommandRegistration,
   PlayerClass,
+  Validation,
 } from "../../class.chain.js";
 
 const registration = new CommandRegistration()
@@ -9,20 +10,21 @@ const registration = new CommandRegistration()
   .setDescription("Get player status, online or offline")
   .setAliases(["con", "checkon"])
   .setCategory("Built-in")
-  .setUsage(["<playerName: Player.nameTag>"])
-  .setExample(["checkonline JustSky001"]);
+  .setInputs({ 0: ["playername"] })
+  .setUsage(["<playername: Player.nameTag>"])
+  .setExample(["con JustSky001"]);
 
 Command.BuildCommand(registration, (interaction) => {
-  const { sender } = interaction;
+  const { sender, inputs } = interaction;
   const player = new PlayerClass(sender);
 
-  if (!args[0])
+  if (Validation.isUndefined(inputs.getInput(0)))
     return sender.sendMessage("§cSeconds arguments cannot be empty");
 
-  const checkPlayer = player.isOnline(args[0]);
+  const checkPlayer = player.isOnline(inputs.getInput(0));
   return sender.sendMessage(
     checkPlayer
-      ? `§aPlayer with names §f${args[0]} §ais online`
-      : `§cPlayer with names §f${args[0]} §cnot found or offline`
+      ? `§aPlayer with names §f${inputs.getInput(0)} §ais online`
+      : `§cPlayer with names §f${inputs.getInput(0)} §cnot found or offline`
   );
 });

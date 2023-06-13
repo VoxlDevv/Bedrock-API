@@ -48,6 +48,7 @@ class FormClass {
    */
   setTitle(text) {
     this.formType.title(text);
+    return this;
   }
 
   /**
@@ -56,6 +57,7 @@ class FormClass {
    */
   setBody(text) {
     this.formType.body(text);
+    return this;
   }
 
   /**
@@ -65,6 +67,7 @@ class FormClass {
    */
   addButton(text, iconPath = undefined) {
     this.formType.button(text, iconPath);
+    return this;
   }
 
   /**
@@ -73,6 +76,7 @@ class FormClass {
    */
   setButton1(text) {
     this.formType.button1(text);
+    return this;
   }
 
   /**
@@ -81,6 +85,7 @@ class FormClass {
    */
   setButton2(text) {
     this.formType.button2(text);
+    return this;
   }
 
   /**
@@ -91,6 +96,7 @@ class FormClass {
    */
   addDropdown(label, options, defaultValue = undefined) {
     this.formType.dropdown(label, options, defaultValue);
+    return this;
   }
 
   /**
@@ -103,6 +109,7 @@ class FormClass {
    */
   addSlider(label, minValue, maxValue, valueStep, defaultValue = undefined) {
     this.formType.slider(label, minValue, maxValue, valueStep, defaultValue);
+    return this;
   }
 
   /**
@@ -113,6 +120,7 @@ class FormClass {
    */
   addTextField(label, placeholder, defaultValue = undefined) {
     this.formType.textField(label, placeholder, defaultValue);
+    return this;
   }
 
   /**
@@ -122,6 +130,7 @@ class FormClass {
    */
   addToggle(label, defaultValue = undefined) {
     this.formType.toggle(label, defaultValue);
+    return this;
   }
 
   /**

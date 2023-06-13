@@ -1,6 +1,7 @@
 import { world, Player } from "@minecraft/server";
 import { EntityClass } from "./Entity.Class.js";
 import { ErrorClass } from "../message/Error.Class.js";
+import * as World from "../world/World.Function.js";
 
 class PlayerClass extends EntityClass {
   /**
@@ -53,19 +54,9 @@ class PlayerClass extends EntityClass {
    */
   isOnline(target) {
     return (
-      this.getAllPlayers().find((player) => player.nameTag === target) !==
+      World.getOnlinePlayers().find((player) => player.nameTag === target) !==
       undefined
     );
-  }
-
-  /**
-   * Get all player in the world
-   * @param {Boolean} asNumber - Types
-   * @returns {Array<String>|Number}
-   * @example getAllPlayers(true);
-   */
-  getAllPlayers(asNumber = false) {
-    return asNumber ? world.getAllPlayers().length : world.getAllPlayers();
   }
 }
 

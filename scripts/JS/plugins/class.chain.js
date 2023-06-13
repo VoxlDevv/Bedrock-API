@@ -8,6 +8,7 @@ export {
   FailedClass,
   FormClass,
   Form,
+  World,
   Database,
   AfterEvents,
   BeforeEvents,

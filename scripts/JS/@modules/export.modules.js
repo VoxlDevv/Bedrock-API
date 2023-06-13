@@ -8,6 +8,7 @@ export { ErrorClass } from "./handlers/message/Error.Class.js";
 export { FailedClass } from "./handlers/message/Failed.Class.js";
 export { FormClass } from "./handlers/interface/Form.Class.js";
 export * as Form from "./handlers/interface/Form.Function.js";
+export * as World from "./handlers/world/World.Function.js";
 
 export { Database } from "./storages/Database.Class.js";
 

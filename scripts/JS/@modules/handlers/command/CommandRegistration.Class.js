@@ -100,7 +100,7 @@ class CommandRegistration {
    * @param {Object} inputs
    */
   setInputs(inputs) {
-    if (Validation.isObject(input)) Object.assign(this.inputs, inputs);
+    if (Validation.isObject(inputs)) Object.assign(this.inputs, inputs);
     return this;
   }
 
