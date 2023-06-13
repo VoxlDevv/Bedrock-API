@@ -14,7 +14,7 @@ class FailedClass {
         },
         {
           translate: "commands.generic.unknown",
-          with: [`§f${commandName}§c`],
+          with: [`${commandName}`],
         },
       ],
     });

@@ -19,7 +19,9 @@ Command.BuildCommand(registration, (interaction) => {
   const player = new PlayerClass(sender);
 
   if (Validation.isUndefined(inputs.getInput(0)))
-    return sender.sendMessage("§cSeconds arguments cannot be empty");
+    return sender.sendMessage(
+      "§cPlayername should be starts with @, like @PlayerName"
+    );
 
   const checkPlayer = player.isOnline(inputs.getInput(0));
   return sender.sendMessage(

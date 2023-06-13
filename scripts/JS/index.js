@@ -1,4 +1,4 @@
-// Index importer 
+// Index importer
 import { system } from "@minecraft/server";
 import { Config } from "./config.js";
 

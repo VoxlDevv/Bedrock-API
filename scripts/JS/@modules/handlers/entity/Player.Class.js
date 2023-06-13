@@ -86,7 +86,7 @@ class PlayerClass extends EntityClass {
    * @returns {ItemStack|undefined}
    */
   getRightItem() {
-    return this.container.getItem(this.playerObject.selectedSlot) ?? undefined;
+    return this.container.getItem(this.playerObject.selectedSlot);
   }
 
   /**
@@ -101,20 +101,6 @@ class PlayerClass extends EntityClass {
       });
     }
     return inventory;
-  }
-
-  /**
-   * Add enchantment to right hands item
-   * @param {ItemStack} item - Item stack
-   * @param {String|EnchantmentType} enchant - Enchant name
-   * @param {Number|undefined} level - Enchant level
-   */
-  addRightEnchant(item, enchant, level = 1) {
-    const enchant = new Enchantment(enchant, level);
-    this.container.setItem(
-      this.playerObject.selectedSlot,
-      item.getComponent("enchantment").addEnchantment(enchant)
-    );
   }
 }
 

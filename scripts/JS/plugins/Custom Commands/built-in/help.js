@@ -38,7 +38,7 @@ Command.BuildCommand(registration, (interaction) => {
         item.usage.length === 0 ? "No usage found" : item.usage.join(", ")
       }\n§7Example Usage: §f${
         item.example.length === 0 ? "No example found" : item.example.join(", ")
-      }\n§a-------------------------`
+      }\n§a---------------------------`
     );
   } else {
     const startIndex = ((inputs.getInput(0) ?? 1) - 1) * PAGE_LIMIT;

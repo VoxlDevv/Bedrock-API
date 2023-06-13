@@ -31,7 +31,7 @@ class EntityClass {
    * @example getTags();
    */
   getTags() {
-    return this.entity.getTags();
+    return this.entityObject.getTags();
   }
 
   /**
@@ -61,7 +61,7 @@ class EntityClass {
       );
 
     const check = this.getTags()?.find((tag) => tag.startsWith(startswith));
-    return check ? check : false;
+    return check;
   }
 }
 
