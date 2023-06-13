@@ -1,7 +1,7 @@
 {
   "format_version": 2,
   "header": {
-    "name": "§eJSBedrock-API",
+    "name": "§eBedrock-API",
     "description": "§cMade By §fJustSkyDev(YouTube)",
     "uuid": "405e8f7a-db2d-11ed-afa1-0242ac120002",
     "version": [1, 0, 2],
@@ -13,7 +13,7 @@
       "language": "javascript",
       "uuid": "5900e4e2-642d-4dbc-ba06-57801afd235b",
       "entry": "scripts/JS/index.js",
-      "version": [1, 0, 0]
+      "version": [1, 0, 2]
     }
   ],
   "dependencies": [
@@ -29,5 +29,18 @@
       "module_name": "@minecraft/server-ui",
       "version": "1.1.0-beta"
     }
-  ]
+  ],
+  "metadata": {
+    "Author": "JustSkyDev",
+    "YouTube": "https://youtube.com/@JustSkyDev",
+    "API": {
+      "Version": "1.0.2-pre-release",
+      "URL": "https://github.com/JustSkyDev/Bedrock-API",
+      "License": "MIT",
+      "Download": {
+        "Stable": "https//github.com/JustSkyDev/Bedrock-API/releases/latest",
+        "Beta": "https://github.com/JustSkyDev/Bedrock-API/archive/refs/heads/main.zip"
+      }
+    }
+  }
 }
