@@ -1,4 +1,9 @@
-import { Entity } from "@minecraft/server";
+import {
+  Container,
+  Entity,
+  EntityAddRiderComponent,
+  ItemStack,
+} from "@minecraft/server";
 import { ErrorClass } from "../message/Error.Class.js";
 
 class EntityClass {
@@ -8,7 +13,7 @@ class EntityClass {
    */
   constructor(entityObject) {
     /**@private */
-    this.entity = entityObject;
+    this.entityObject = entityObject;
     /**@private */
     this.error = new ErrorClass();
 
@@ -39,7 +44,7 @@ class EntityClass {
     if (!tag)
       this.error.CustomError("EntityClass", "hasTag", "tag cannot be empty");
 
-    return this.entity.hasTag(tag);
+    return this.entityObject.hasTag(tag);
   }
 
   /**
@@ -47,21 +52,19 @@ class EntityClass {
    * @returns {Boolean|String}
    * @example getSpecificTag("tag:");
    */
-  getSpecificTag(startswith) {
-    if (!this.startswith)
+  getTagStartsWith(startswith) {
+    if (!startswith)
       this.error.CustomError(
         "EntityClass",
-        "getSpecificTagg",
+        "getTagStartsWith",
         "startswith cannot be empty"
       );
 
     const check = this.getTags()?.find((tag) => tag.startsWith(startswith));
     return check ? check : false;
   }
-
-  getEmptySlot() {
-    const inventory  = this.entity
-  }
 }
 
 export { EntityClass };
+
+new EntityClass().getRightHandsItem().getItem();

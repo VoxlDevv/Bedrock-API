@@ -9,4 +9,4 @@ function getOnlinePlayers(asNumber = false) {
   return asNumber ? world.getAllPlayers().length : world.getAllPlayers();
 }
 
-export {getOnlinePlayers}
+export { getOnlinePlayers };

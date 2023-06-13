@@ -14,6 +14,7 @@ export { Database } from "./storages/Database.Class.js";
 
 export { AfterEvents } from "./events/AfterEventEmitter.Class.js";
 export { BeforeEvents } from "./events/BeforeEventEmitter.Class.js";
+export { SystemEvents } from "./events/SystemEventEmitter.Class.js";
 
 export { CooldownClass } from "./utils/Cooldown.Class.js";
 export * as Formatter from "./utils/Formatter.Function.js";

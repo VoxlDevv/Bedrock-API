@@ -12,6 +12,7 @@ export {
   Database,
   AfterEvents,
   BeforeEvents,
+  SystemEvents,
   CooldownClass,
   Formatter,
   Timer,

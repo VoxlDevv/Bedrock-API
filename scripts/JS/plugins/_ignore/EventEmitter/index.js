@@ -1,5 +1,5 @@
-import { world } from "@minecraft/server";
-import { AfterEvents, BeforeEvents } from "../../class.chain.js";
+import { world, system } from "@minecraft/server";
+import { AfterEvents, BeforeEvents, SystemEvents } from "../../class.chain.js";
 
 // Before events
 world.beforeEvents.chatSend.subscribe((cb) => BeforeEvents.emit("chat", cb));
@@ -145,4 +145,13 @@ world.afterEvents.weatherChange.subscribe((cb) =>
 
 world.afterEvents.worldInitialize.subscribe((cb) =>
   AfterEvents.emit("worldInitialize", cb)
+);
+
+// System events
+system.events.beforeWatchdogTerminate.subscribe((cb) =>
+  SystemEvents.emit("beforeWatchdog", cb)
+);
+
+system.events.scriptEventReceive.subscribe((cb) =>
+  SystemEvents.emit("scriptEvent", cb)
 );
