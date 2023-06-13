@@ -66,5 +66,3 @@ class EntityClass {
 }
 
 export { EntityClass };
-
-new EntityClass().getRightHandsItem().getItem();
