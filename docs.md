@@ -27,24 +27,24 @@
   
   - [Information](#information)
   - [Classes](#classes)
-    - [Command Class usage](#command-class)
-      - [Types](#command-types)
+    - [Command Class usage](#command-class-usage)
+      - [Types](#types)
       - [Custom Commands](#custom-commands)
-    - [Player & Entity Class usage](#player-entity-class)
-      - [Constructor](#player-entity-constructor)
-      - [Types](#player-entity-types)
-    - [Database & Collection Class usage](#database-and-collection)
+    - [Player and Entity Class usage](#player-and-entity-class-usage)
+      - [Constructor](#constructor)
+      - [Types](#player-and-entity-types)
+    - [Database and Collection Class usage](#database-and-collection-class-usage)
       - [Database](#database-usage)
       - [Collection](#collection-usage)
-    - [Events Class usage](#events-class)
+    - [Events Class usage](#events-class-usage)
       - [After events](#after-events)
       - [Before events](#before-events)
       - [System events](#system-events)
-    - [Cooldown Class usage(pre-release)](#cooldown-class)
-    - [Form Class usage](#form-class)
+    - [Cooldown Class usage(pre-release)](#cooldown-class-usagepre-release)
+    - [Form Class usage](#form-class-usage)
       - [Constructor](#form-constructor)
       - [Types](#form-types)
-    - [Message Class usage](#message-class)
+    - [Message Class usage](#message-class-usage)
       - [Error Class](#error-class)
       - [Chat Class](#chat-class)
       - [Failed Class](#failed-class)
@@ -63,17 +63,8 @@
 </br>
 
 ## Classes
-
-</br>
-
-### Command Class usage
-
-</br>
-
+#### Command Class usage
 - Types 
-
-</br> 
-
   - CommandRegistration 
     ```
     [STRING] = something like "hellow World"
@@ -96,9 +87,6 @@
           0: ["string"]
       }); // [OBJECT:ARRAY:STRING] Defines the expected input types for the command. For example, for the command "!test inputType", if the input is not a string, it will return undefined. To specify a player's name, prefix it with an "@" sign, like "@playerName" (optional)
     ```
-
-</br>
-
 - Custom Commands
   ```javascript
   // Example Path: plugins/Custom Commands/yourCommand.js 
