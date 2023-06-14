@@ -28,7 +28,7 @@
   - [Information](#information)
   - [Classes](#classes)
     - [Command Class usage](#command-class-usage)
-      - [Command Types](#command-types)
+      - [Command Types](#command-class-usage)
       - [Custom Commands](#custom-commands)
     - [Player & Entity Class usage](#player-&-entity-class-usage)
       - [Constructor](#constructor)
