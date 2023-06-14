@@ -63,8 +63,17 @@
 </br>
 
 ## Classes
+
+</br>
+
 ### Command Class usage
+
+</br>
+
 - Types 
+
+</br> 
+
   - CommandRegistration 
     ```
     [STRING] = something like "hellow World"
@@ -87,6 +96,9 @@
           0: ["string"]
       }); // [OBJECT:ARRAY:STRING] Defines the expected input types for the command. For example, for the command "!test inputType", if the input is not a string, it will return undefined. To specify a player's name, prefix it with an "@" sign, like "@playerName" (optional)
     ```
+
+</br>
+
 - Custom Commands
   ```javascript
   // Example Path: plugins/Custom Commands/yourCommand.js 
