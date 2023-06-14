@@ -64,7 +64,7 @@
 
 ## Classes
 #### Command Class usage
-- Types 
+- Command types 
   - CommandRegistration 
     ```
     [STRING] = something like "hellow World"
