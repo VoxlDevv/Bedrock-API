@@ -28,7 +28,7 @@
     - [Command Class](#command-class)
       - [Command Types](#command-class)
       - [Custom Commands](#command-class)
-    - [Player & Entity Class](#player-&-entity-class)
+    - [Player & Entity Class](#player-%26-entity-class)
       - [Constructor](#player-&-entity-class)
       - [Player & Entity Types](#player-&-entity-class)
     - [Database & Collection Class](#database-&-collection-class)
