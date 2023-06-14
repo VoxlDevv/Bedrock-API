@@ -61,7 +61,7 @@
 <br />
 
 ## Classes
-### Command Class usage
+### Command Class
 - Command types 
   ```
   [STRING] = something like "hellow World"
