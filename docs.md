@@ -10,8 +10,6 @@
   <p align="center">
     Bedrock API is a library built using Minecraft Bedrock Scripting API. This library will help you keep your code clean and make it easier to interact with the Scripting API, while including a lot of new classes/functions/methods for you to use! and some built-in custom command
     <br />
-    <a href="#"><strong>Docs Coming soon »</strong></a>
-    <br />
     <br />
     <a href="https://github.com/JustSkyDev/Bedrock-API">View</a>
     ·
@@ -27,27 +25,27 @@
   
   - [Information](#information)
   - [Classes](#classes)
-    - [Command Class usage](#command-class-usage)
-      - [Command Types](#command-class-usage)
-      - [Custom Commands](#custom-commands)
-    - [Player & Entity Class usage](#player-&-entity-class-usage)
-      - [Constructor](#constructor)
-      - [Player & Entity Types](#player-&-entity-types)
-    - [Database & Collection Class usage](#database-&-collection-class-usage)
-      - [Database](#database-usage)
-      - [Collection](#collection-usage)
-    - [Events Class usage](#events-class-usage)
-      - [After events](#after-events)
-      - [Before events](#before-events)
-      - [System events](#system-events)
-    - [Cooldown Class usage](#cooldown-class-usage)
-    - [Form Class usage](#form-class-usage)
-      - [Constructor](#form-constructor)
-      - [Types](#form-types)
-    - [Message Class usage](#message-class-usage)
-      - [Error Class](#error-class)
-      - [Chat Class](#chat-class)
-      - [Failed Class](#failed-class)
+    - [Command Class](#command-class)
+      - [Command Types](#command-class)
+      - [Custom Commands](#command-class)
+    - [Player & Entity Class](#player-&-entity-class)
+      - [Constructor](#player-&-entity-class)
+      - [Player & Entity Types](#player-&-entity-class)
+    - [Database & Collection Class](#database-&-collection-class)
+      - [Database](#database-&-collection-class)
+      - [Collection](#database-&-collection-class)
+    - [Events Class](#events-class)
+      - [After events](#events-class)
+      - [Before events](#events-class)
+      - [System events](#events-class)
+    - [Cooldown Class](#cooldown-class)
+    - [Form Class](#form-class)
+      - [Constructor](#form-class)
+      - [Form Types](#form-class)
+    - [Message Class](#message-class)
+      - [Error Class](#message-class)
+      - [Chat Class](#message-class)
+      - [Failed Class](#message-class)
   - [Functions](#functions)
     - [Formatter](#formatter-function)
     - [Validation](#validation-function)
@@ -60,33 +58,32 @@
 ## Information
 - Default command prefix is `!`
 
-</br>
+<br />
 
 ## Classes
-#### Command Class usage
+### Command Class usage
 - Command types 
-  - CommandRegistration 
-    ```
-    [STRING] = something like "hellow World"
-    [BOOLEAN] = only true or false, like on and off
-    [ARRAY:STRING] = something like ["hello", "world"]
-    [OBJECT:ARRAY:STRING] = something like { 0: ["hello"], 1: ["world"] }
-    ```
-    ```javascript
-    new CommandRegistration()
-      .setName("name") // [STRING] Command name (required)
-      .setDescription("Command description") // [STRING] Command description (optional)
-      .setPrivate(true) // [BOOLEAN] If true, only players with Op permission can access this command, and vice versa (optional) && DEFAULT = false
-      .setAliases(["t"]) // [ARRAY:STRING] Command aliases. For example, if you register a command with the name "test" and an alias "t", you can run the command "test" by using the alias, such as "!test" or "!t" (optional)
-      .setCategory("category") // [STRING] Command category. This will appear when you use the !help command (optional) && DEFAULT = Global 
-      .setRequireTags(["some", "tags"]) // [ARRAY:STRING] If a player does not have any of these tags, they won't be able to access the command, and vice versa (optional)
-      .setExample(["!test", "!t"]) // [ARRAY:STRING] Examples of how to use the command (optional)
-      .setUsage(["<undefined>"]) // [ARRAY:STRING] Similar to .setExample(), but provides input rather than usage examples (optional)
-      .setInputs({
-          // Available input types: ["string", "number", "boolean", "playername"]
-          0: ["string"]
-      }); // [OBJECT:ARRAY:STRING] Defines the expected input types for the command. For example, for the command "!test inputType", if the input is not a string, it will return undefined. To specify a player's name, prefix it with an "@" sign, like "@playerName" (optional)
-    ```
+  ```
+  [STRING] = something like "hellow World"
+  [BOOLEAN] = only true or false, like on and off
+  [ARRAY:STRING] = something like ["hello", "world"]
+  [OBJECT:ARRAY:STRING] = something like { 0: ["hello"], 1: ["world"] }
+  ```
+  ```javascript
+  new CommandRegistration()
+    .setName("name") // [STRING] Command name (required)
+    .setDescription("Command description") // [STRING] Command description (optional)
+    .setPrivate(true) // [BOOLEAN] If true, only players with Op permission can access this command, and vice versa (optional) && DEFAULT = false
+    .setAliases(["t"]) // [ARRAY:STRING] Command aliases. For example, if you register a command with the name "test" and an alias "t", you can run the command "test" by using the alias, such as "!test" or "!t" (optional)
+    .setCategory("category") // [STRING] Command category. This will appear when you use the !help command (optional) && DEFAULT = Global 
+    .setRequireTags(["some", "tags"]) // [ARRAY:STRING] If a player does not have any of these tags, they won't be able to access the command, and vice versa (optional)
+    .setExample(["!test", "!t"]) // [ARRAY:STRING] Examples of how to use the command (optional)
+    .setUsage(["<undefined>"]) // [ARRAY:STRING] Similar to .setExample(), but provides input rather than usage examples (optional)
+    .setInputs({
+        // Available input types: ["string", "number", "boolean", "playername"]
+        0: ["string"]
+    }); // [OBJECT:ARRAY:STRING] Defines the expected input types for the command. For example, for the command "!test inputType", if the input is not a string, it will return undefined. To specify a player's name, prefix it with an "@" sign, like "@playerName" (optional)
+  ```
 - Custom Commands
   ```javascript
   // Example Path: plugins/Custom Commands/yourCommand.js 
@@ -124,3 +121,31 @@
     console.warn(getSenderName);
   });
   ```
+
+<br />
+
+### Player & Entity Class
+- Constructor
+  ```javascript
+  // Entity 
+  const entity = new EntityClass(entityObject);
+  // Player 
+  const player = bew PlayerClass(playerObject);
+  ```
+- Player & Entity Types 
+  - Entity
+    ```javascript
+    entity.getTags(); // Get entity all tags
+    entity.hasTag("tag"); // Test if entity had tag with name "tag" or nor
+    entity.getTagStartsWith("rank:"); // Get specific tag
+    ```
+  - Player 
+    ##### Extends with Entity Class
+    ```javascript
+    player.getScore("scoreboardName"); // Get scoreboard score
+    player.getXpLevel(); // Get xp level
+    player.isOnline("playerName"); // Check if player is online or not
+    player.getEmptySlots(); // Check player inventory slots, empty count
+    player.getRightItem(); // Get player right hands item
+    player.getItems(); // Get all items in player inventory 
+    ```
