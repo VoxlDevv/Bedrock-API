@@ -28,12 +28,12 @@
     - [Command Class](#command-class)
       - [Command Types](#command-class)
       - [Custom Commands](#command-class)
-    - [Player and Entity Class](#player-%26-entity-class)
+    - [Player and Entity Class](#player-and-entity-class)
       - [Constructor](#player-and-entity-class)
-      - [Player & Entity Types](#player-&-entity-class)
-    - [Database & Collection Class](#database-&-collection-class)
-      - [Database](#database-&-collection-class)
-      - [Collection](#database-&-collection-class)
+      - [Player and Entity Types](#player-and-entity-class)
+    - [Database and Collection Class](#database-and-collection-class)
+      - [Database](#database-and-collection-class)
+      - [Collection](#database-and-collection-class)
     - [Events Class](#events-class)
       - [After events](#events-class)
       - [Before events](#events-class)
@@ -124,7 +124,7 @@
 
 <br />
 
-### Player & Entity Class
+### Player and Entity Class
 - Constructor
   ```javascript
   // Entity 
@@ -132,7 +132,7 @@
   // Player 
   const player = bew PlayerClass(playerObject);
   ```
-- Player & Entity Types 
+- Player and Entity Types 
   - Entity
     ```javascript
     entity.getTags(); // Get entity all tags
