@@ -30,7 +30,7 @@
     - [Command Class usage](#command-class-usage)
       - [Types](#types)
       - [Custom Commands](#custom-commands)
-    - [Player and Entity Class usage](#player-and-entity-class-usage)
+    - [Player & Entity Class usage](#player-&-entity-class-usage)
       - [Constructor](#constructor)
       - [Types](#player-and-entity-types)
     - [Database and Collection Class usage](#database-and-collection-class-usage)
