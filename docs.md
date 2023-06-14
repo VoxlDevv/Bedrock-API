@@ -76,16 +76,16 @@
     new CommandRegistration()
       .setName("name") // [STRING] Command name (required)
       .setDescription("Command description") // [STRING] Command description (optional)
-      .setPrivate(true) // [BOOLEAN] If true, only player with Op permission can access this command, and vice versa (optional) && DEFAULT = false
-      .setAliases(["t"]) // [ARRAY:STRING] Command aliases, that's mean, if you registering command with name "test" and aliases with name "t", you can run command "test" by running the aliases, like !test and !t (optional)
-      .setCategory("category") // [STRING] Command category, this is will appear when you use command !help (optional) && DEFAULT = Global 
-      .setRequireTags(["some", "tags"]) // [ARRAY:STRING] What this means is, if you don't have one of these tags, you won't be able to access the command, and vice versa (optional)
-      .setExample(["!test", "!t"]) // [ARRAY:STRING] This is giving the way how to use the command (optional)
-      .setUsage(["<undefined>"]) // [ARRAY:STRING] Almost the same as .setExample() but it provides input rather than how the command is used (optional)
+      .setPrivate(true) // [BOOLEAN] If true, only players with Op permission can access this command, and vice versa (optional) && DEFAULT = false
+      .setAliases(["t"]) // [ARRAY:STRING] Command aliases. For example, if you register a command with the name "test" and an alias "t", you can run the command "test" by using the alias, such as "!test" or "!t" (optional)
+      .setCategory("category") // [STRING] Command category. This will appear when you use the !help command (optional) && DEFAULT = Global 
+      .setRequireTags(["some", "tags"]) // [ARRAY:STRING] If a player does not have any of these tags, they won't be able to access the command, and vice versa (optional)
+      .setExample(["!test", "!t"]) // [ARRAY:STRING] Examples of how to use the command (optional)
+      .setUsage(["<undefined>"]) // [ARRAY:STRING] Similar to .setExample(), but provides input rather than usage examples (optional)
       .setInputs({
-        // Available ["string", "number", "boolean", "playername"]
-        0: ["string"]
-      }); // [OBJECT:ARRAY:STRING] And this is the bit hard part to understand, it works almost the same as args[] but it's more specific, like !test inputType, i set the input to "string", so whatever i set the input, if that is not a string that will return undefined, and "playername" must be prefixed with an "@" sign like @playerName (optional)
+          // Available input types: ["string", "number", "boolean", "playername"]
+          0: ["string"]
+      }); // [OBJECT:ARRAY:STRING] Defines the expected input types for the command. For example, for the command "!test inputType", if the input is not a string, it will return undefined. To specify a player's name, prefix it with an "@" sign, like "@playerName" (optional)
     ```
 - Custom Commands
   ```javascript
