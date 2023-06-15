@@ -53,6 +53,7 @@ https://github.com/othneildrew/Best-README-Template
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
+    <li><a href="#Documentations">Documentations</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
@@ -103,6 +104,12 @@ Recommended Method
 
 Create a new world, since Scripting API is still experimental. Make sure in your settings you have `Beta API's` in `Experiments` menu.
 I have some examples on how you can use this library. Specifically on custom commands. Type in the game chat `!help` or `!help [page number]` for the list of custom commands or `!help [command name]` to get information on a specific command!
+
+<!-- DOCUMENTATIONS -->
+<br />
+
+## Documentations
+- [Bedrock-API Docs](https://github.com/JustSkyDev/docs/blob/main/list/Bedrock-API-Docs.md)
 
 <!-- ROADMAP -->
 <br />
