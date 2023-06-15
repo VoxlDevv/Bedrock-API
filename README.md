@@ -14,7 +14,7 @@ https://github.com/othneildrew/Best-README-Template
   <p align="center">
     Bedrock API is a library built using Minecraft Bedrock Scripting API. This library will help you keep your code clean and make it easier to interact with the Scripting API, while including a lot of new classes/functions/methods for you to use! and some built-in custom command
     <br />
-    <a href="https://github.com/JustSkyDev/docs/blob/main/list/Bedrock-API-Docs.md"><strong>Documentations</strong></a>
+    <a href="https://justskydev.github.io/docs/list/Bedrock-API-Docs"><strong>Documentations</strong></a>
     <br />
     <br />
     <a href="https://github.com/JustSkyDev/Bedrock-API">View</a>
