@@ -109,7 +109,7 @@ I have some examples on how you can use this library. Specifically on custom com
 <br />
 
 ## Documentations
-- [Bedrock-API Docs](https://github.com/JustSkyDev/docs/blob/main/list/Bedrock-API-Docs.md)
+- [Bedrock-API Docs](https://justskydev.github.io/docs/list/Bedrock-API-Docs)
 
 <!-- ROADMAP -->
 <br />
