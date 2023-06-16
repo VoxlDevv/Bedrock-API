@@ -3,10 +3,10 @@ import { Command, CommandRegistration, Validation } from "../../class.chain.js";
 const registration = new CommandRegistration()
   .setName("help")
   .setDescription("Help command")
-  .setCategory("Built-in")
+  .setCategory("Information")
   .setAliases(["?", "h"])
   .setInputs({ 0: ["number", "string"] })
-  .setUsage(["<page: CommandName|number|null>"])
+  .setUsage(["<pageNumber | CommandName>"])
   .setExample(["help ping", "help 1", "help"]);
 
 const PAGE_LIMIT = 12;
@@ -35,9 +35,9 @@ Command.BuildCommand(registration, (interaction) => {
       }\n§7Category: §f${item.category}\n§7Aliases: §f${
         item.aliases.length === 0 ? "No aliases found" : item.aliases.join(", ")
       }\n§7Usage: §f${
-        item.usage.length === 0 ? "No usage found" : item.usage.join(", ")
+        item.usage.length === 0 ? "No usage found" : item.usage.join("\n")
       }\n§7Example Usage: §f${
-        item.example.length === 0 ? "No example found" : item.example.join(", ")
+        item.example.length === 0 ? "No example found" : item.example.join("\n")
       }\n§a---------------------------`
     );
   } else {

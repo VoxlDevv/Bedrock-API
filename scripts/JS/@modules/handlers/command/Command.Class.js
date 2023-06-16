@@ -1,4 +1,4 @@
-import { world } from "@minecraft/server";
+import { Player, world } from "@minecraft/server";
 import { Collection } from "../data/Collection.Class.js";
 import { FailedClass } from "../message/Failed.Class.js";
 import { Database } from "../../storages/Database.Class.js";

@@ -115,6 +115,15 @@ class Database {
   }
 
   /**
+   * Find specific values inside Database
+   * @param {Function} fn
+   * @returns {any}
+   */
+  find(fn) {
+    return this.RESTORED_DATA.find(fn);
+  }
+
+  /**
    * Reset database
    */
   reset() {
@@ -155,7 +164,7 @@ class Database {
   entries() {
     return this.RESTORED_DATA.entries();
   }
-  
+
   /**
    * Iterator
    */

@@ -7,7 +7,7 @@ function Format(value, { compactDuration, fullDuration, avoidDuration } = {}) {
     const durations = value.match(
       /-?\d*\.?\d+\s*?(years?|yrs?|weeks?|days?|hours?|hrs?|minutes?|mins?|seconds?|secs?|milliseconds?|msecs?|ms|[smhdwy])/gi
     );
-    return durations ? durations.reduce((a, b) => a + toMS(b), 0) : null;
+    return durations ? durations.reduce((a, b) => a + toMiliseconds(b), 0) : null;
   }
 
   if (typeof value === "number")
