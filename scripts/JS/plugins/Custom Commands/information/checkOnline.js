@@ -3,7 +3,7 @@ import {
   CommandRegistration,
   PlayerClass,
   Validation,
-} from "../../class.chain.js";
+} from "../../class.chain";
 
 const registration = new CommandRegistration()
   .setName("checkonline")
@@ -11,7 +11,7 @@ const registration = new CommandRegistration()
   .setAliases(["con", "checkon"])
   .setCategory("Built-in")
   .setInputs({ 0: ["playername"] })
-  .setUsage(["<playername: Player.nameTag>"])
+  .setUsage(["<playername: Player.name>"])
   .setExample(["con JustSky001"]);
 
 Command.BuildCommand(registration, (interaction) => {

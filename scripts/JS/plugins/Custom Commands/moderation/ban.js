@@ -1,4 +1,3 @@
-import { AfterEvents, PlayerSpawnAfterEvent } from "@minecraft/server";
 import {
   Command,
   CommandRegistration,
@@ -6,8 +5,10 @@ import {
   PlayerClass,
   Validation,
   MS,
+  AfterEvents,
   Timer,
-} from "../../class.chain.js";
+  ChatClass,
+} from "../../class.chain";
 
 const registration = new CommandRegistration()
   .setName("ban")
@@ -52,7 +53,7 @@ Command.BuildCommand(registration, (interaction) => {
     return sender.sendMessage("§cDuration must be a number");
   if (Validation.isUndefined(timeFormat))
     return sender.sendMessage("§cTime format must be a string");
-  if (playerName === sender.nameTag)
+  if (playerName === sender.name)
     return sender.sendMessage("§cYou can't ban yourself");
 
   const parseTime = `${duration} ${timeFormat}`;
@@ -64,43 +65,34 @@ Command.BuildCommand(registration, (interaction) => {
     length: time,
     unbanTime: today.getTime() + time,
     reason: reason ?? "Unknown.",
-    bannedBy: sender.nameTag,
+    bannedBy: sender.name,
   };
 
   if (banDB.hasKey(playerName))
     return sender.sendMessage(
       `§cPlayer with name §f${playerName} $calready banned`
     );
-  else banDB.set(playerName, banData);
+  banDB.set(playerName, banData);
+  return sender.sendMessage(
+    `${playerName} §dhas been banned\n§creason: §f${reason}`
+  );
 });
 
-/**@type {PlayerSpawnAfterEvent} */
-AfterEvents.on("playerSpawn", (data) => {
+AfterEvents.on("playerSpawn", async (data) => {
   const { player } = data;
-});
-
-
-/*
-Server.on("tick", () => {
   const currentTime = new Date().getTime();
-  const bannedPlayers = db.getCollection();
-  if (!bannedPlayers) return;
-  for (let key in bannedPlayers) {
-    if (bannedPlayers.hasOwnProperty(key) && bannedPlayers[key]?.bannedPlayer) {
-      if (bannedPlayers[key]?.unbanTime < currentTime) db.delete(key);
-      else
-        Server.runCommand(
-          `kick "${
-            bannedPlayers[key]?.bannedPlayer
-          }" §r\n§cYou have been banned for §a${MS(
-            bannedPlayers[key]?.length
-          )}§c from this server at §b${bannedPlayers[key]?.date}${
-            bannedPlayers[key]?.reason
-              ? `\n§7Reason: §r${bannedPlayers[key]?.reason}`
-              : ""
-          }`
-        );
-    }
+  const getBanned = banDB.get(player.name);
+  if (Validation.isUndefined(getBanned)) return;
+  const parseBan = JSON.parse(getBanned);
+  if (parseBan && parseBan.unbanTime < currentTime) banDB.delete(player.name);
+  else {
+    await Timer.sleep(1);
+    new ChatClass().runCommand(`
+    kick "${parseBan.playerName}" §r\n§cYou have been banned for §b${MS.Format(
+      parseBan.length
+    )} §cfrom this server at §e${parseBan.date}\n§7Reason: §f${parseBan.reason}
+    `);
   }
 });
-*/
+
+export { banDB };

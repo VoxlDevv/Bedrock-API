@@ -4,7 +4,7 @@ import {
   EntityAddRiderComponent,
   ItemStack,
 } from "@minecraft/server";
-import { ErrorClass } from "../message/Error.Class.js";
+import { ErrorClass } from "../message/Error.Class";
 
 class EntityClass {
   /**

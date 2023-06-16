@@ -2,7 +2,7 @@
  * This is an AutoLoad system
  * Import plugin using pluginFolder, like if you have plugin called "Example" then add "Example" to the pluginFolder, it should looks like this
  * ["Example", "Plugin 1", "Plugin 2"]
- * Don't forget to rename the main plugin with "system.js", example: "Plugin 1/system.js"
+ * Don't forget to rename the main plugin with "system", example: "Plugin 1/system"
  */
 
 const pluginFolder = [
@@ -30,11 +30,11 @@ const pluginFolder = [
 
 
 // Don't Touch
-import "./_ignore/index.js";
+import "./_ignore/index";
 const start = Date.now();
 for (const plugin of pluginFolder) {
   const end = Date.now();
-  import(`./${plugin}/system.js`)
+  import(`./${plugin}/system`)
     .then(() =>
       console.warn(
         `Loaded plugin: ${plugin} successfully, in ${end - start} ms`

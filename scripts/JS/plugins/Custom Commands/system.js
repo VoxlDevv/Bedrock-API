@@ -1,5 +1,6 @@
 // Import your command
-import "./built-in/ping.js";
-import "./information/help.js";
-import "./built-in/checkOnline.js";
-import "./information/version.js";
+import "./information/help";
+import "./information/checkOnline";
+import "./information/version";
+
+import "./moderation/ban"

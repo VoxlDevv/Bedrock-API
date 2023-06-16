@@ -18,4 +18,4 @@ export {
   Timer,
   Validation,
   MS,
-} from "../@modules/export.modules.js";
+} from "../@modules/export.modules";

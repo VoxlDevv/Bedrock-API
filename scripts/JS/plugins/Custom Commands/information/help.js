@@ -1,4 +1,4 @@
-import { Command, CommandRegistration, Validation } from "../../class.chain.js";
+import { Command, CommandRegistration, Validation } from "../../class.chain";
 
 const registration = new CommandRegistration()
   .setName("help")

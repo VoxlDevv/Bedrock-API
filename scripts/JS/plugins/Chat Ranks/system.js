@@ -4,8 +4,8 @@ import {
   PlayerClass,
   Timer,
   ChatClass,
-} from "../class.chain.js";
-import { RankConfig } from "./config.js";
+} from "../class.chain";
+import { RankConfig } from "./config";
 
 BeforeEvents.on("chat", async (data) => {
   const { message, sender } = data;
@@ -19,7 +19,7 @@ BeforeEvents.on("chat", async (data) => {
   await Timer.sleep(2);
   new ChatClass().broadcast({
     text: getRankTag
-      ?.replaceAll("{name}", sender.nameTag)
+      ?.replaceAll("{name}", sender.name)
       ?.replaceAll("{msg}", message),
   });
 });

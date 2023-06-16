@@ -6,9 +6,9 @@ import {
   Enchantment,
   EnchantmentType,
 } from "@minecraft/server";
-import { EntityClass } from "./Entity.Class.js";
-import { ErrorClass } from "../message/Error.Class.js";
-import * as World from "../world/World.Function.js";
+import { EntityClass } from "./Entity.Class";
+import { ErrorClass } from "../message/Error.Class";
+import * as World from "../world/World.Function";
 
 class PlayerClass extends EntityClass {
   /**
@@ -62,13 +62,13 @@ class PlayerClass extends EntityClass {
 
   /**
    * Check player if online
-   * @param {Player.nameTag} target - Player nametag
+   * @param {Player.name} target - Player name
    * @returns {Boolean}
    * @example isOnline("JustSky001");
    */
   isOnline(target) {
     return (
-      World.getOnlinePlayers().find((player) => player.nameTag === target) !==
+      World.getOnlinePlayers().find((player) => player.name === target) !==
       undefined
     );
   }

@@ -1,10 +1,10 @@
 import { Player, world } from "@minecraft/server";
-import { Collection } from "../data/Collection.Class.js";
-import { FailedClass } from "../message/Failed.Class.js";
-import { Database } from "../../storages/Database.Class.js";
-import { ErrorClass } from "../message/Error.Class.js";
-import * as Validation from "../../utils/Validation.Function.js";
-import { Config } from "../../../config.js";
+import { Collection } from "../data/Collection.Class";
+import { FailedClass } from "../message/Failed.Class";
+import { Database } from "../../storages/Database.Class";
+import { ErrorClass } from "../message/Error.Class";
+import * as Validation from "../../utils/Validation.Function";
+import { Config } from "../../../config";
 
 class CommandClass {
   /**

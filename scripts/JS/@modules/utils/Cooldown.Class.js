@@ -1,4 +1,4 @@
-import { setTickTimeout } from "./Timer.Function.js";
+import { setTickTimeout } from "./Timer.Function";
 
 class CooldownClass {
   /**

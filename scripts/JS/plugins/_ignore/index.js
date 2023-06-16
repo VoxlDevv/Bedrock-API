@@ -1,2 +1,2 @@
 // Runner
-import "./EventEmitter/index.js";
+import "./EventEmitter/index";

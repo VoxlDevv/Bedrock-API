@@ -1,11 +1,11 @@
 import { Player, world } from "@minecraft/server";
-import { ErrorClass } from "./Error.Class.js";
+import { ErrorClass } from "./Error.Class";
 
 class ChatClass {
   /**
    * Broadcast message in chat
    * @param {Object} rawtext - The text must be Object
-   * @param {Player|Player.nameTag} player - Player name (Optional)
+   * @param {Player|Player.name} player - Player name (Optional)
    * @returns {any}
    * @example broadcast({ text: "Hello world!" });
    */

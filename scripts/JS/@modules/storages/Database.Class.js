@@ -1,8 +1,8 @@
 import { system, world } from "@minecraft/server";
-import { Collection } from "../handlers/data/Collection.Class.js";
-import { ChatClass } from "../handlers/message/Chat.Class.js";
-import { ErrorClass } from "../handlers/message/Error.Class.js";
-import * as Formatter from "../utils/Formatter.Function.js";
+import { Collection } from "../handlers/data/Collection.Class";
+import { ChatClass } from "../handlers/message/Chat.Class";
+import { ErrorClass } from "../handlers/message/Error.Class";
+import * as Formatter from "../utils/Formatter.Function";
 
 class Database {
   /**
@@ -89,6 +89,7 @@ class Database {
    * @returns {Object}
    */
   get(key) {
+    if (!this.hasKey(key)) return undefined;
     return this.RESTORED_DATA.get(key);
   }
 

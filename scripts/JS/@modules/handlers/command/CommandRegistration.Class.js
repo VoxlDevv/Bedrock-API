@@ -1,4 +1,4 @@
-import * as Validation from "../../utils/Validation.Function.js";
+import * as Validation from "../../utils/Validation.Function";
 
 class CommandRegistration {
   /**

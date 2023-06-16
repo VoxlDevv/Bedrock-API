@@ -1,4 +1,4 @@
-import { Command, CommandRegistration } from "../../class.chain.js";
+import { Command, CommandRegistration } from "../../class.chain";
 
 const registration = new CommandRegistration()
   .setName("version")

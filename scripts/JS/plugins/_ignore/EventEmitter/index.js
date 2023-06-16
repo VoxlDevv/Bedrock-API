@@ -1,5 +1,5 @@
 import { world, system } from "@minecraft/server";
-import { AfterEvents, BeforeEvents, SystemEvents } from "../../class.chain.js";
+import { AfterEvents, BeforeEvents, SystemEvents } from "../../class.chain";
 
 // Before events
 world.beforeEvents.chatSend.subscribe((cb) => BeforeEvents.emit("chat", cb));

@@ -7,7 +7,7 @@ import {
   ModalFormData,
   ModalFormResponse,
 } from "@minecraft/server-ui";
-import { ErrorClass } from "../message/Error.Class.js";
+import { ErrorClass } from "../message/Error.Class";
 
 /**
  * Forced send form to player

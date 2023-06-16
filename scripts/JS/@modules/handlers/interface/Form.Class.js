@@ -7,8 +7,8 @@ import {
   ModalFormData,
   ModalFormResponse,
 } from "@minecraft/server-ui";
-import { ErrorClass } from "../message/Error.Class.js";
-import * as Validation from "../../utils/Validation.Function.js";
+import { ErrorClass } from "../message/Error.Class";
+import * as Validation from "../../utils/Validation.Function";
 
 class FormClass {
   /**
