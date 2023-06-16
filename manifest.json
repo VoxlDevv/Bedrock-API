@@ -4,7 +4,7 @@
     "name": "§eBedrock-API",
     "description": "§cMade By §fJustSkyDev(YouTube)",
     "uuid": "405e8f7a-db2d-11ed-afa1-0242ac120002",
-    "version": [1, 0, 2],
+    "version": [1, 0, 3],
     "min_engine_version": [1, 20, 0]
   },
   "modules": [
@@ -13,7 +13,7 @@
       "language": "javascript",
       "uuid": "5900e4e2-642d-4dbc-ba06-57801afd235b",
       "entry": "scripts/JS/index.js",
-      "version": [1, 0, 2]
+      "version": [1, 0, 3]
     }
   ],
   "dependencies": [
@@ -34,7 +34,7 @@
     "Author": "JustSkyDev",
     "YouTube": "https://youtube.com/@JustSkyDev",
     "API": {
-      "Version": "1.0.2-release",
+      "Version": "1.0.3-release",
       "URL": "https://github.com/JustSkyDev/Bedrock-API",
       "License": "MIT",
       "Download": {
