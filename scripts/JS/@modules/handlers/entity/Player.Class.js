@@ -1,13 +1,7 @@
-import {
-  world,
-  Player,
-  Container,
-  ItemStack,
-  Enchantment,
-  EnchantmentType,
-} from "@minecraft/server";
+import { world, Player, Container, ItemStack } from "@minecraft/server";
 import { EntityClass } from "./Entity.Class";
 import { ErrorClass } from "../message/Error.Class";
+import { Validation } from "../../export.modules";
 import * as World from "../world/World.Function";
 
 class PlayerClass extends EntityClass {
@@ -101,6 +95,16 @@ class PlayerClass extends EntityClass {
       });
     }
     return inventory;
+  }
+
+  /**
+   * Set item lore (player selected slot)
+   * @param {Array<String>} lore - Lore list
+   */
+  setItemLore(lore) {
+    if (!Validation.isArray(lore)) return;
+    const getItem = this.getRightItem()?.setLore(lore);
+    this.container.setItem(this.playerObject.selectedSlot, getItem);
   }
 }
 

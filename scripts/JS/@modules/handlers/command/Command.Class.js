@@ -1,4 +1,4 @@
-import { Player, world } from "@minecraft/server";
+import { ChatSendAfterEvent, Player, world } from "@minecraft/server";
 import { Collection } from "../data/Collection.Class";
 import { FailedClass } from "../message/Failed.Class";
 import { Database } from "../../storages/Database.Class";
@@ -27,9 +27,17 @@ class CommandClass {
   }
 
   /**
+   * @typedef {Object} CommandCallbackArgs
+   * @property {Player} sender - Sender command
+   * @property {Object} inputs - Get command inputs
+   * @property {(inputNumber: Number) => String|Boolean|Number|undefined} inputs.getInput - Get command input
+   * @property {Config} config - Get config from config.js
+   * @property {Database} DB - GlobalDB
+   * @property {ChatSendAfterEvent} raw - Get raw packets
+   * @property {Object} allCommandRegistration - Get all command registration
    * Build custom command
    * @param {CommandRegistration} registration - Registration information
-   * @param {Function} callback - Callback
+   * @param {(args: CommandCallbackArgs) => void} callback - Callback function
    */
   BuildCommand(registration, callback) {
     const information = registration.extractJSON();
@@ -99,12 +107,25 @@ class CommandClass {
     const getTypes = commandInput[inputNumber];
     const inputValue = args[inputNumber];
 
-    for (const types in getTypes) {
-      const type = getTypes[types];
-      if (type === "playername" && inputValue && inputValue.startsWith("@"))
+    if (!getTypes || inputValue === undefined) return undefined;
+
+    for (const type of getTypes) {
+      if (type === "playername" && inputValue.startsWith("@"))
         return inputValue.substring(1);
-      if (inputTypes.includes(type) && typeof inputValue === type)
-        return inputValue;
+
+      if (inputTypes.includes(type)) {
+        if (type === "boolean") {
+          if (inputValue === "true") return true;
+          if (inputValue === "false") return false;
+        }
+
+        if (type === "number") {
+          const parsedValue = Number(inputValue);
+          if (!isNaN(parsedValue)) return parsedValue;
+        }
+
+        if (typeof inputValue === type) return inputValue;
+      }
     }
 
     return undefined;

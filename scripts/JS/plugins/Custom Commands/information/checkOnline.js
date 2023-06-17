@@ -9,7 +9,7 @@ const registration = new CommandRegistration()
   .setName("checkonline")
   .setDescription("Get player status, online or offline")
   .setAliases(["con", "checkon"])
-  .setCategory("Built-in")
+  .setCategory("Information")
   .setInputs({ 0: ["playername"] })
   .setUsage(["<playername: Player.name>"])
   .setExample(["con JustSky001"]);

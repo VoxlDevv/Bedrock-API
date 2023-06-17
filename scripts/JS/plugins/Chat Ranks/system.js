@@ -16,7 +16,7 @@ BeforeEvents.on("chat", async (data) => {
     player.getTagStartsWith("rank:")?.slice(5) ?? RankConfig.defaultRank;
 
   // Privilege kont
-  await Timer.sleep(2);
+  await Timer.sleep(1);
   new ChatClass().broadcast({
     text: getRankTag
       ?.replaceAll("{name}", sender.name)

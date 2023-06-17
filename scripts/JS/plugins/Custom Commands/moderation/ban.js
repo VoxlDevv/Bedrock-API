@@ -47,9 +47,8 @@ Command.BuildCommand(registration, (interaction) => {
       "§cPlayer name must be starts with @, example: @JustSky001"
     );
   if (!player.isOnline(playerName))
-    return sender.sendMessage(`§cPlayer with name §f${playerName} not found`);
-  2;
-  if (Validation.isUndefined(duration))
+    return sender.sendMessage(`§cPlayer with name §f${playerName} §cnot found`);
+  if (!Validation.isNumber(duration))
     return sender.sendMessage("§cDuration must be a number");
   if (Validation.isUndefined(timeFormat))
     return sender.sendMessage("§cTime format must be a string");

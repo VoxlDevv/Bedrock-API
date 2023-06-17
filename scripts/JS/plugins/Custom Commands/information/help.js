@@ -34,11 +34,13 @@ Command.BuildCommand(registration, (interaction) => {
           : item.description
       }\n§7Category: §f${item.category}\n§7Aliases: §f${
         item.aliases.length === 0 ? "No aliases found" : item.aliases.join(", ")
-      }\n§7Usage: §f${
-        item.usage.length === 0 ? "No usage found" : item.usage.join("\n")
-      }\n§7Example Usage: §f${
-        item.example.length === 0 ? "No example found" : item.example.join("\n")
-      }\n§a---------------------------`
+      }\n§7Usage: §f\n - ${
+        item.usage.length === 0 ? "No usage found" : item.usage.join("\n - ")
+      }\n§7Example Usage: §f\n - ${
+        item.example.length === 0
+          ? "No example found"
+          : item.example.join("\n - ")
+      }\n§a--------------------------`
     );
   } else {
     const startIndex = ((inputs.getInput(0) ?? 1) - 1) * PAGE_LIMIT;
@@ -53,7 +55,7 @@ Command.BuildCommand(registration, (interaction) => {
 
     messages += `§a--- Showing help page ${
       inputs.getInput(0) ?? 1
-    } of ${maxPages} (§e${Command.getPrefix()}help <page>§a) ---\n\n`;
+    } of ${maxPages} [§e${Command.getPrefix()}help <page>§a] ---\n\n`;
     messages += items
       .map((item) => {
         let categoryLine = "";
