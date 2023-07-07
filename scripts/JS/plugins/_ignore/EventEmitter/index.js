@@ -116,7 +116,7 @@ world.afterEvents.leverActivate.subscribe((cb) =>
 );
 
 world.afterEvents.messageReceive.subscribe((cb) =>
-  AfterEvents.emit("messageRecieve", cb)
+  AfterEvents.emit("messageReceive", cb)
 );
 
 world.afterEvents.pistonActivate.subscribe((cb) =>

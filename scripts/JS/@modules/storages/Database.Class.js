@@ -3,6 +3,7 @@ import { Collection } from "../handlers/data/Collection.Class";
 import { ChatClass } from "../handlers/message/Chat.Class";
 import { ErrorClass } from "../handlers/message/Error.Class";
 import * as Formatter from "../utils/Formatter.Function";
+import { Validation } from "../export.modules";
 
 class Database {
   /**
@@ -53,15 +54,44 @@ class Database {
           const parsedData = cleanData.split(",");
           const decryptKey = Formatter.DecryptText(parsedData[0]);
           const decryptValue = Formatter.DecryptText(parsedData[1]);
-          this.RESTORED_DATA.set(decryptKey, decryptValue);
+          this.RESTORED_DATA.set(decryptKey, JSON.parse(decryptValue));
         });
     }
+  }
+
+  /**@private */
+  _dataMerge(...arrays) {
+    const destination = {};
+    arrays.forEach((source) => {
+      let prop;
+      for (prop in source) {
+        if (prop in destination && destination[prop] === null)
+          destination[prop] = source[prop];
+        else if (prop in destination && Validation.isArray(destination[prop]))
+          destination[prop] = destination[prop].concat(source[prop]);
+        else if (prop in destination && typeof destination[prop] === "object")
+          destination[prop] = merge(destination[prop], source[prop]);
+        else destination[prop] = source[prop];
+      }
+    });
+    return destination;
+  }
+
+  /**
+   * Push data to database
+   * @param {String} key - Key
+   * @param {Any} value - Value or data
+   */
+  push(key, value) {
+    if (!this.hasKey(key)) return undefined;
+    const newData = this._dataMerge(this.get(key), value);
+    this.set(key, newData);
   }
 
   /**
    * Set data to database
    * @param {String} key - Key
-   * @param {String} value - Value or data
+   * @param {Any} value - Value or data
    */
   set(key, value) {
     if (value.length >= 32000)

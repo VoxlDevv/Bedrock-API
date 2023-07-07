@@ -37,12 +37,27 @@ class PlayerClass extends EntityClass {
    * getScore("money");
    */
   getScore(objective) {
-    return (
-      (
-        world.scoreboard.getObjective(objective) ??
-        world.scoreboard.addObjective(objective, objective)
-      ).getScore(this.playerObject.scoreboardIdentity) ?? 0
-    );
+    try {
+      const sb = world.scoreboard.getObjective(objective);
+      if (!sb) world.scoreboard.addObjective(objective, objective);
+      return sb.getScore(this.playerObject.scoreboardIdentity);
+    } catch {
+      return 0;
+    }
+  }
+
+  /**
+   * Set player scoreboard value
+   * @param {String} objective - Scoreboard objective name
+   * @param {Number} value - Value
+   * @param {Boolean} isAdd - If true, it will add score not set score
+   */
+  setScore(objective, value, isAdd = false) {
+    const sb = world.scoreboard.getObjective(objective);
+    if (!sb) world.scoreboard.addObjective(objective, objective);
+    isAdd
+      ? this.setScore(objective, this.getScore(objective) + value)
+      : sb.setScore(this.playerObject.scoreboardIdentity, value);
   }
 
   /**
@@ -105,6 +120,15 @@ class PlayerClass extends EntityClass {
     if (!Validation.isArray(lore)) return;
     const getItem = this.getRightItem()?.setLore(lore);
     this.container.setItem(this.playerObject.selectedSlot, getItem);
+  }
+
+  /**
+   * Get player object from name
+   * @param {Player.name} target - Player name
+   * @returns {Object|undefined}
+   */
+  getPlayerObjectFromName(target) {
+    return World.getOnlinePlayers().find((player) => player.name === target);
   }
 }
 

@@ -63,8 +63,8 @@ Command.BuildCommand(registration, (interaction) => {
           categoryLine = `§e${item.category}:\n`;
           currentCategory = item.category;
         }
-        return `${categoryLine} §7${Command.getPrefix()}${item.name}: §f${
-          item.description
+        return `${categoryLine} §7${Command.getPrefix()}${item.name} §f${
+          item.usage[0]
         }`;
       })
       .join("\n");
