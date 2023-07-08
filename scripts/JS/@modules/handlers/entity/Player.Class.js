@@ -53,11 +53,15 @@ class PlayerClass extends EntityClass {
    * @param {Boolean} isAdd - If true, it will add score not set score
    */
   setScore(objective, value, isAdd = false) {
-    const sb = world.scoreboard.getObjective(objective);
-    if (!sb) world.scoreboard.addObjective(objective, objective);
-    isAdd
-      ? this.setScore(objective, this.getScore(objective) + value)
-      : sb.setScore(this.playerObject.scoreboardIdentity, value);
+    try {
+      const sb = world.scoreboard.getObjective(objective);
+      if (!sb) world.scoreboard.addObjective(objective, objective);
+      return isAdd
+        ? this.setScore(objective, this.getScore(objective) + value)
+        : sb.setScore(this.playerObject.scoreboardIdentity, value);
+    } catch {
+      return undefined;
+    }
   }
 
   /**

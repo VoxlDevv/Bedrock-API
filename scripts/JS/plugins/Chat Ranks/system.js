@@ -1,10 +1,5 @@
-import {
-  Command,
-  BeforeEvents,
-  PlayerClass,
-  Timer,
-  ChatClass,
-} from "../class.chain";
+import { world } from "@minecraft/server";
+import { Command, BeforeEvents, PlayerClass } from "../class.chain";
 import { RankConfig } from "./config";
 
 BeforeEvents.on("chat", async (data) => {
@@ -15,11 +10,7 @@ BeforeEvents.on("chat", async (data) => {
   const getRankTag =
     player.getTagStartsWith("rank:")?.slice(5) ?? RankConfig.defaultRank;
 
-  // Privilege kont
-  await Timer.sleep(1);
-  new ChatClass().broadcast({
-    text: getRankTag
-      ?.replaceAll("{name}", sender.name)
-      ?.replaceAll("{msg}", message),
-  });
+  world.sendMessage(
+    getRankTag?.replaceAll("{name}", sender.name)?.replaceAll("{msg}", message)
+  );
 });
