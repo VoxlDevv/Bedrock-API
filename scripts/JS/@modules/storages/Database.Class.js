@@ -1,4 +1,4 @@
-import { world } from "@minecraft/server";
+import { world, ScoreboardIdentityType } from "@minecraft/server";
 import { Collection } from "../handlers/data/Collection.Class";
 import { ChatClass } from "../handlers/message/Chat.Class";
 import { ErrorClass } from "../handlers/message/Error.Class";
@@ -20,28 +20,36 @@ class Database {
     this.RESTORED_DATA = new Collection();
     /**@private */
     this.error = new ErrorClass();
+    /**@private */
+    this.objective =
+      world.scoreboard.getObjective(name) ??
+      world.scoreboard.addObjective(name, name);
 
-    this.RESTORED_DATA.if(name.length > 13 || name.length === 0);
-    this.error.CustomError(
-      "Database",
-      "constructor",
-      "Database names can't be more than 13 characters or empty"
-    );
+    if (name.length > 15 || !name)
+      this.error.CustomError(
+        "Database",
+        "constructor",
+        "Database names can't be more than 15 characters nor empty"
+      );
+    if (this.DB_SAVED_NAMES.includes(name))
+      this.error.CustomError(
+        "Database",
+        "constructor",
+        `Database with name ${name} already exist`
+      );
 
-    try {
-      world.scoreboard.addObjective(`DB_${this.DB_NAME}`, `DB_${this.DB_NAME}`);
-    } catch {
-      world.scoreboard
-        .getObjective(`DB_${this.DB_NAME}`)
-        ?.getParticipants()
-        .forEach((results) => {
-          const [cleanData, parsedData] = results.displayName
-            .slice(1, -1)
-            .split(",")
-            .map(Formatter.DecryptText);
-          this.RESTORED_DATA.set(cleanData, JSON.parse(parsedData));
-        });
-    }
+    this.DB_SAVED_NAMES.push(name);
+
+    Timer.setInfinityLoop(() => {
+      for (const participant of this.objective.getParticipants()) {
+        if (participant.type !== ScoreboardIdentityType.fakePlayer) continue;
+        const [cleanData, parsedData] = participant.displayName
+          .slice(1, -1)
+          .split(",")
+          .map(Formatter.DecryptText);
+        this.RESTORED_DATA.set(JSON.parse(cleanData), JSON.parse(parsedData));
+      }
+    });
   }
 
   /**@private */
@@ -76,7 +84,6 @@ class Database {
    * @param {Any} value - Value or data
    */
   async set(key, value) {
-    if (!this.hasKey(key)) return undefined;
     if (value.length >= 32000)
       this.error.CustomError(
         "Database",
@@ -86,9 +93,10 @@ class Database {
     const [encryptKey, encryptValue] = [key, value].map((item) =>
       Formatter.EncryptText(JSON.stringify(item))
     );
-    await Timer.sleep(0);
+    this.delete(key);
+    await null;
     new ChatClass().runCommand(
-      `scoreboard players set "[${encryptKey},${encryptValue}]" "DB_${this.DB_NAME}" 0`
+      `scoreboard players set "[${encryptKey},${encryptValue}]" "${this.DB_NAME}" 0`
     );
     this.RESTORED_DATA.set(key, value);
   }
@@ -110,9 +118,9 @@ class Database {
     const [encryptKey, encryptValue] = [key, this.RESTORED_DATA.get(key)].map(
       (item) => Formatter.EncryptText(JSON.stringify(item))
     );
-    await Timer.sleep(0);
+    await null;
     new ChatClass().runCommand(
-      `scoreboard players reset "[${encryptKey},${encryptValue}]" "DB_${this.DB_NAME}"`
+      `scoreboard players reset "[${encryptKey},${encryptValue}]" "${this.DB_NAME}"`
     );
     this.RESTORED_DATA.delete(key);
   }
