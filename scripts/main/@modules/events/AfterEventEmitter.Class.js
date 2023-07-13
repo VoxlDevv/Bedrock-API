@@ -1,5 +1,3 @@
-import { AfterEventType } from "../types/EventType";
-
 class AfterEventEmitterClass {
   /**
    * Event emitter class
@@ -8,6 +6,21 @@ class AfterEventEmitterClass {
     /**@private */
     this.listeners = {};
   }
+
+  /**
+   * @typedef {"blockBreak" | "blockExplode" | "blockPlace" | 
+   * "buttonPush" | "chat" | "dataDrivenEntity" | "effectAdd" | 
+   * "entityDie" | "entityHealthChanged" | "entityHitBlock" | 
+   * "entityHitEntity" | "entityHurt" | "entityRemoved" | 
+   * "entitySpawn" | "explosion" | "itemCompleteUse" | 
+   * "itemDefinition" | "itemReleaseUse" | "itemStartUse" | 
+   * "itemStartUseOn" | "itemStopUse" | "itemStopUseOn" | 
+   * "itemUse" | "itemUseOn" | "leverAction" | "messageReceive" | 
+   * "pistonActivate" | "playerJoin" | "playerLeave" | "playerSpawn" | 
+   * "pressurePlatePop" | "pressurePlatePush" | "projectileHit" | 
+   * "targetBlockHit" | "tripWireTrip" | "weatherChange" | 
+   * "worldInitialize"} AfterEventType
+   */
 
   /**
    * Add listener

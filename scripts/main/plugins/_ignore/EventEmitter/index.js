@@ -183,5 +183,3 @@ system.beforeEvents.watchdogTerminate.subscribe((cb) =>
 system.afterEvents.scriptEventReceive.subscribe((cb) =>
   SystemEvents.emit("scriptEventReceive", cb)
 );
-
-AfterEvents.on("")

@@ -1,5 +1,3 @@
-import { SystemEventType } from "../types/EventType";
-
 class SystemEventEmitterClass {
   /**
    * Event emitter class
@@ -8,6 +6,10 @@ class SystemEventEmitterClass {
     /**@private */
     this.listeners = {};
   }
+
+  /**
+   * @typedef {"watchdogTerminate" | "scriptEventReceive"} SystemEventType
+   */
 
   /**
    * Add listener

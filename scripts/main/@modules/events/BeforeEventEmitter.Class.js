@@ -1,5 +1,3 @@
-import { BeforeEventType } from "../types/EventType";
-
 class BeforeEventEmitterClass {
   /**
    * Event emitter class
@@ -8,6 +6,11 @@ class BeforeEventEmitterClass {
     /**@private */
     this.listeners = {};
   }
+
+  /**
+   * @typedef {"chat" | "dataDrivenEntity" | "explosion" | "itemDefinition" |
+   * "itemUse" | "itemUseOn" | "pistonActivate"} BeforeEventType
+   */
 
   /**
    * Add listener
