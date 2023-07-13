@@ -12,7 +12,7 @@ const registration = new CommandRegistration()
 const PAGE_LIMIT = 12;
 
 Command.BuildCommand(registration, (interaction) => {
-  const { sender, inputs, allCommandRegistration } = interaction;
+  const { sender, inputs } = interaction;
 
   if (
     isNaN(inputs.getInput(0)) &&
@@ -45,7 +45,7 @@ Command.BuildCommand(registration, (interaction) => {
   } else {
     const startIndex = ((inputs.getInput(0) ?? 1) - 1) * PAGE_LIMIT;
     const endIndex = (inputs.getInput(0) ?? 1) * PAGE_LIMIT;
-    const items = Array.from(allCommandRegistration.values())
+    const items = Array.from(Command.getAllCommands().values())
       .slice(startIndex, endIndex)
       .filter((command) => !command.private);
     const maxPages = Math.ceil(items.length / PAGE_LIMIT);
@@ -70,16 +70,16 @@ Command.BuildCommand(registration, (interaction) => {
       .join("\n");
 
     if (inputs.getInput(0) === 1) {
-      const remainingItems = Array.from(allCommandRegistration.values()).slice(
-        PAGE_LIMIT
-      );
+      const remainingItems = Array.from(
+        Command.getAllCommands().values()
+      ).slice(PAGE_LIMIT);
       if (remainingItems.length > 0) {
         messages += `\n§eTo view the next page, use §f${Command.getPrefix()}help 2 §eor §f${Command.getPrefix()}help 3§e, and so on`;
       }
     } else {
-      const remainingItems = Array.from(allCommandRegistration.values()).slice(
-        endIndex
-      );
+      const remainingItems = Array.from(
+        Command.getAllCommands().values()
+      ).slice(endIndex);
       if (remainingItems.length > 0) {
         messages += `\n§eTo view the next page, use §f${Command.getPrefix()}help ${
           (inputs.getInput(0) ?? 1) + 1

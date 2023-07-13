@@ -1,3 +1,5 @@
+import { SystemEventType } from "../types/EventType";
+
 class SystemEventEmitterClass {
   /**
    * Event emitter class
@@ -24,7 +26,7 @@ class SystemEventEmitterClass {
 
   /**
    * On called events
-   * @param {String} eventName
+   * @param {SystemEventType} eventName
    * @param {Function} callback
    */
   on(eventName, callback) {
@@ -33,8 +35,8 @@ class SystemEventEmitterClass {
 
   /**
    * Once called events
-   * @param {*} eventName
-   * @param {*} callback
+   * @param {SystemEventType} eventName
+   * @param {Function} callback
    */
   once(eventName, callback) {
     this._addListener(eventName, callback, true);

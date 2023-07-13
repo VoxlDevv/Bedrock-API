@@ -23,7 +23,7 @@ class Database {
     /**@private */
     this.objective =
       world.scoreboard.getObjective(name) ??
-      world.scoreboard.addObjective(name, name);
+      world.scoreboard.addObjective(`DB_${name}`, `DB_${name}`);
 
     if (name.length > 15 || !name)
       this.error.CustomError(
@@ -40,7 +40,7 @@ class Database {
 
     this.DB_SAVED_NAMES.push(name);
 
-    Timer.setInfinityLoop(() => {
+    Timer.runNextTick(() => {
       for (const participant of this.objective.getParticipants()) {
         if (participant.type !== ScoreboardIdentityType.fakePlayer) continue;
         const [cleanData, parsedData] = participant.displayName
@@ -96,7 +96,7 @@ class Database {
     this.delete(key);
     await null;
     new ChatClass().runCommand(
-      `scoreboard players set "[${encryptKey},${encryptValue}]" "${this.DB_NAME}" 0`
+      `scoreboard players set "[${encryptKey},${encryptValue}]" "DB_${this.DB_NAME}" 0`
     );
     this.RESTORED_DATA.set(key, value);
   }
@@ -120,7 +120,7 @@ class Database {
     );
     await null;
     new ChatClass().runCommand(
-      `scoreboard players reset "[${encryptKey},${encryptValue}]" "${this.DB_NAME}"`
+      `scoreboard players reset "[${encryptKey},${encryptValue}]" "DB_${this.DB_NAME}"`
     );
     this.RESTORED_DATA.delete(key);
   }

@@ -1,8 +1,23 @@
 {
+  "name": "bedrock-api",
+  "version": "1.0.3-release",
+  "description": "Minecraft Bedrock Scripting API",
+  "main": "./scripts/main/index.js",
+  "type": "module",
+  "author": "JustSkyDev",
+  "license": "MIT",
+  "keywords": [
+    "Minecraft",
+    "Minecraft-Bedrock",
+    "API",
+    "Scripting-API",
+    "Library",
+    "Typescript"
+  ],
   "dependencies": {
-    "@minecraft/server": "^1.3.0-beta.1.20.0-stable",
-    "@minecraft/server-gametest": "^1.0.0-beta.1.20.0-stable",
-    "@minecraft/server-ui": "^1.1.0-beta.1.20.0-stable",
-    "@minecraft/vanilla-data": "^1.20.0"
+    "@minecraft/server": "^1.4.0-beta.1.20.10-stable",
+    "@minecraft/server-gametest": "^1.0.0-beta.1.20.10-stable",
+    "@minecraft/server-ui": "^1.2.0-beta.1.20.10-stable",
+    "@minecraft/vanilla-data": "^1.20.10"
   }
 }

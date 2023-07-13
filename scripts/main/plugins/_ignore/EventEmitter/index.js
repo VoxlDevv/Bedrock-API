@@ -1,5 +1,9 @@
 import { world, system } from "@minecraft/server";
-import { AfterEvents, BeforeEvents, SystemEvents } from "../../class.chain";
+import {
+  BeforeEvents,
+  AfterEvents,
+  SystemEvents,
+} from "../../class.chain";
 
 // Before events
 world.beforeEvents.chatSend.subscribe((cb) => BeforeEvents.emit("chat", cb));
@@ -57,8 +61,16 @@ world.afterEvents.entityDie.subscribe((cb) =>
   AfterEvents.emit("entityDie", cb)
 );
 
-world.afterEvents.entityHit.subscribe((cb) =>
-  AfterEvents.emit("entityHit", cb)
+world.afterEvents.entityHealthChanged.subscribe((cb) =>
+  AfterEvents.emit("entityHealthChanged", cb)
+);
+
+world.afterEvents.entityHitBlock.subscribe((cb) =>
+  AfterEvents.emit("entityHitBlock", cb)
+);
+
+world.afterEvents.entityHitEntity.unsubscribe((cb) =>
+  AfterEvents.emit("entityHitEntity", cb)
 );
 
 world.afterEvents.entityHurt.subscribe((cb) =>
@@ -77,28 +89,28 @@ world.afterEvents.explosion.subscribe((cb) =>
   AfterEvents.emit("explosion", cb)
 );
 
-world.afterEvents.itemCompleteCharge.subscribe((cb) =>
-  AfterEvents.emit("itemCompleteCharge", cb)
+world.afterEvents.itemCompleteUse.subscribe((cb) =>
+  AfterEvents.emit("itemCompleteUse", cb)
 );
 
 world.afterEvents.itemDefinitionEvent.subscribe((cb) =>
   AfterEvents.emit("itemDefinition", cb)
 );
 
-world.afterEvents.itemReleaseCharge.subscribe((cb) =>
-  AfterEvents.emit("itemReleaseCharge", cb)
+world.afterEvents.itemReleaseUse.subscribe((cb) =>
+  AfterEvents.emit("itemReleaseUse", cb)
 );
 
-world.afterEvents.itemStartCharge.subscribe((cb) =>
-  AfterEvents.emit("itemStartCharge", cb)
+world.afterEvents.itemStartUse.subscribe((cb) =>
+  AfterEvents.emit("itemStartUse", cb)
 );
 
 world.afterEvents.itemStartUseOn.subscribe((cb) =>
   AfterEvents.emit("itemStartUseOn", cb)
 );
 
-world.afterEvents.itemStopCharge.subscribe((cb) =>
-  AfterEvents.emit("itemStopCharge", cb)
+world.afterEvents.itemStopUse.subscribe((cb) =>
+  AfterEvents.emit("itemStopUse", cb)
 );
 
 world.afterEvents.itemStopUseOn.subscribe((cb) =>
@@ -111,8 +123,8 @@ world.afterEvents.itemUseOn.subscribe((cb) =>
   AfterEvents.emit("itemUseOn", cb)
 );
 
-world.afterEvents.leverActivate.subscribe((cb) =>
-  AfterEvents.emit("leverActivate", cb)
+world.afterEvents.leverAction.subscribe((cb) =>
+  AfterEvents.emit("leverAction", cb)
 );
 
 world.afterEvents.messageReceive.subscribe((cb) =>
@@ -135,8 +147,24 @@ world.afterEvents.playerSpawn.subscribe((cb) =>
   AfterEvents.emit("playerSpawn", cb)
 );
 
+world.afterEvents.pressurePlatePop.subscribe((cb) =>
+  AfterEvents.emit("pressurePlatePop", cb)
+);
+
+world.afterEvents.pressurePlatePush.subscribe((cb) =>
+  AfterEvents.emit("pressurePlatePush", cb)
+);
+
 world.afterEvents.projectileHit.subscribe((cb) =>
   AfterEvents.emit("projectileHit", cb)
+);
+
+world.afterEvents.targetBlockHit.subscribe((cb) =>
+  AfterEvents.emit("targetBlockHit", cb)
+);
+
+world.afterEvents.tripWireTrip.subscribe((cb) =>
+  AfterEvents.emit("tripWireTrip", cb)
 );
 
 world.afterEvents.weatherChange.subscribe((cb) =>
@@ -148,10 +176,12 @@ world.afterEvents.worldInitialize.subscribe((cb) =>
 );
 
 // System events
-system.events.beforeWatchdogTerminate.subscribe((cb) =>
-  SystemEvents.emit("beforeWatchdog", cb)
+system.beforeEvents.watchdogTerminate.subscribe((cb) =>
+  SystemEvents.emit("watchdogTerminate", cb)
 );
 
-system.events.scriptEventReceive.subscribe((cb) =>
-  SystemEvents.emit("scriptEvent", cb)
+system.afterEvents.scriptEventReceive.subscribe((cb) =>
+  SystemEvents.emit("scriptEventReceive", cb)
 );
+
+AfterEvents.on("")

@@ -1,4 +1,6 @@
-class AfterEventEmitterClass {
+import { BeforeEventType } from "../types/EventType";
+
+class BeforeEventEmitterClass {
   /**
    * Event emitter class
    */
@@ -24,7 +26,7 @@ class AfterEventEmitterClass {
 
   /**
    * On called events
-   * @param {String} eventName
+   * @param {BeforeEventType} eventName
    * @param {Function} callback
    */
   on(eventName, callback) {
@@ -33,8 +35,8 @@ class AfterEventEmitterClass {
 
   /**
    * Once called events
-   * @param {*} eventName
-   * @param {*} callback
+   * @param {BeforeEventType} eventName
+   * @param {Function} callback
    */
   once(eventName, callback) {
     this._addListener(eventName, callback, true);
@@ -59,5 +61,5 @@ class AfterEventEmitterClass {
   }
 }
 
-const AfterEvents = new AfterEventEmitterClass();
-export { AfterEvents };
+const BeforeEvents = new BeforeEventEmitterClass();
+export { BeforeEvents };

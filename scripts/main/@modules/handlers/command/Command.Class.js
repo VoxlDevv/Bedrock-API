@@ -1,4 +1,4 @@
-import { ChatSendAfterEvent, Player, world } from "@minecraft/server";
+import { ChatSendAfterEvent, ChatSendBeforeEvent, Player, world } from "@minecraft/server";
 import { Collection } from "../data/Collection.Class";
 import { FailedClass } from "../message/Failed.Class";
 import { Database } from "../../storages/Database.Class";
@@ -134,6 +134,7 @@ class CommandClass {
   /**
    * Execute
    * @private
+   * @param {ChatSendBeforeEvent} packet 
    */
   execute(packet) {
     const { message, sender } = packet;
@@ -167,7 +168,6 @@ class CommandClass {
         raw: packet,
         sender,
         config: Config,
-        allCommandRegistration: this.getAllCommands(),
       });
   }
 }

@@ -1,6 +1,16 @@
 import { system } from "@minecraft/server";
 
 /**
+ * Run next tick
+ * @param {Function} callback
+ * @returns {Number}
+ */
+function runNextTick(callback) {
+  const timerId = system.run(callback);
+  return timerId;
+}
+
+/**
  * Repeatedly executing a function
  * @param {Function} callback
  * @param {Number} tick
@@ -28,7 +38,7 @@ function setTickTimeout(callback, tick) {
  * @returns {Number}
  */
 function setInfinityLoop(callback) {
-  const timerId = system.run(callback, tick);
+  const timerId = system.runInterval(callback);
   return timerId;
 }
 
@@ -62,4 +72,11 @@ async function sleep(tick) {
   }
 }
 
-export { setTickInterval, setTickTimeout, setInfinityLoop, clearTick, sleep };
+export {
+  runNextTick,
+  setTickInterval,
+  setTickTimeout,
+  setInfinityLoop,
+  clearTick,
+  sleep,
+};
