@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "module": "ES2022",
+    "moduleResolution": "node",
+    "target": "ES2022",
+    "lib": ["ES2022", "DOM"],
+    "allowSyntheticDefaultImports": true,
+    "noImplicitAny": true,
+    "preserveConstEnums": true,
+    "declaration": false,
+    "sourceMap": false,
+    "outDir": "scripts"
+  },
+  "include": ["src/**/*"],
+  "exclude": ["scripts"]
+}
