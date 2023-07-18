@@ -28,7 +28,7 @@ class Database {
     this.RESTORED_DATA = new Collection();
     this.error = new ErrorClass();
     this.objective =
-      world.scoreboard.getObjective(name) ??
+      world.scoreboard.getObjective(`DB_${name}`) ??
       world.scoreboard.addObjective(`DB_${name}`, `DB_${name}`);
 
     if (name.length > 15 || !name)
@@ -118,7 +118,7 @@ class Database {
    * Delete database data based with key
    * @param key - Key
    */
-  async delete(key: string): Promise<undefined | void> {
+  async delete(key: string): Promise<void | undefined> {
     if (!this.hasKey(key)) return undefined;
     const [encryptKey, encryptValue] = [key, this.RESTORED_DATA.get(key)].map(
       (item) => Formatter.EncryptText(JSON.stringify(item))

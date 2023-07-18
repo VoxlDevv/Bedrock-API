@@ -9,7 +9,7 @@
     "preserveConstEnums": true,
     "declaration": false,
     "sourceMap": false,
-    "outDir": "scripts"
+    "outDir": "scripts/main"
   },
   "include": ["src/**/*"],
   "exclude": ["scripts"]

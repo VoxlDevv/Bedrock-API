@@ -21,7 +21,7 @@ class Database {
         this.RESTORED_DATA = new Collection();
         this.error = new ErrorClass();
         this.objective =
-            world.scoreboard.getObjective(name) ??
+            world.scoreboard.getObjective(`DB_${name}`) ??
                 world.scoreboard.addObjective(`DB_${name}`, `DB_${name}`);
         if (name.length > 15 || !name)
             this.error.CustomError("Database", "constructor", "Database names can't be more than 15 characters nor empty");
