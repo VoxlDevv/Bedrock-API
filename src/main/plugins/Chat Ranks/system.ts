@@ -4,6 +4,7 @@ import { RankConfig } from "./config";
 
 BeforeEvents.on("chat", (rawdata) => {
   const { sender, message } = rawdata;
+  rawdata.cancel = true;
   const player = new PlayerClass(sender);
   const getRank =
     player.getTagStartsWith("rank:")?.slice(5) ?? RankConfig.defaultRank;
