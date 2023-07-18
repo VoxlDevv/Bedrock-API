@@ -134,7 +134,7 @@ class CommandClass {
    * @private
    * @param packet
    */
-  execute(packet: ChatSendBeforeEvent) {
+  private execute(packet: ChatSendBeforeEvent) {
     const { message, sender } = packet;
     if (!message.startsWith(this.commandPrefix)) return;
 
