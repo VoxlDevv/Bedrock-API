@@ -134,7 +134,7 @@ class Database {
    * Find data without key
    * @param fn - Function
    */
-  find(fn: (value: any, key?: any, map?: Map<any, any>) => any): [] {
+  find(fn: (value: any, key?: any, map?: Map<any, any>) => any): any {
     return this.RESTORED_DATA.find(fn);
   }
 

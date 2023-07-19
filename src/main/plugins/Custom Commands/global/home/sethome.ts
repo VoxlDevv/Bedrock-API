@@ -24,7 +24,7 @@ Command.BuildCommand(registration, (interaction) => {
 
   const homeDBFrmt = `${sender.name}_${homeName}`;
   if (HomeDB.hasKey(homeDBFrmt))
-    return sender.sendMessage(`§eHome with name ${homeName} already exist`);
+    return sender.sendMessage(`§eHome with name §e${homeName} §calready exist`);
 
   HomeDB.set(homeDBFrmt, {
     name: homeName,

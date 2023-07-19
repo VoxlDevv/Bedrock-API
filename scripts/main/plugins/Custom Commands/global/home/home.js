@@ -7,15 +7,16 @@ const registration = new CommandRegistration()
     .setInputs({ 0: ["string"] })
     .setUsage(["<homeName>"])
     .setExample(["home myHome"]);
-Command.BuildCommand(registration, (interaction) => {
+Command.BuildCommand(registration, async (interaction) => {
     const { sender, inputs } = interaction;
     const homeName = inputs.getInput(0);
     if (Validation.isUndefined(homeName))
         return sender.sendMessage("§cHome name cannot be empty");
     const homeDBFrmt = `${sender.name}_${homeName}`;
     if (!HomeDB.hasKey(homeDBFrmt))
-        return sender.sendMessage(`§cHome with name ${homeName} doesn't exist`);
+        return sender.sendMessage(`§cHome with name §e${homeName} §cdoesn't exist`);
     const parsedHome = HomeDB.get(homeDBFrmt);
+    await null;
     sender.teleport({
         x: parsedHome.coordinate[0],
         y: parsedHome.coordinate[1],

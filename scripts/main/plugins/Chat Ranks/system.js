@@ -1,8 +1,10 @@
 import { world } from "@minecraft/server";
-import { BeforeEvents, PlayerClass } from "../@modules";
+import { BeforeEvents, Command, PlayerClass } from "../@modules";
 import { RankConfig } from "./config";
 BeforeEvents.on("chat", (rawdata) => {
     const { sender, message } = rawdata;
+    if (message.startsWith(Command.getPrefix()))
+        return;
     rawdata.cancel = true;
     const player = new PlayerClass(sender);
     const getRank = player.getTagStartsWith("rank:")?.slice(5) ?? RankConfig.defaultRank;

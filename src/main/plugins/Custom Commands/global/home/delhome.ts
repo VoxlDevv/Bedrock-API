@@ -2,7 +2,7 @@ import { Command, CommandRegistration, Validation } from "../../../@modules";
 import { HomeDB } from "./sethome";
 
 const registration: CommandRegistration = new CommandRegistration()
-  .setName("delome")
+  .setName("delhome")
   .setDescription("Delete home")
   .setAliases(["deletehome", "dhome"])
   .setInputs({ 0: ["string"] })
@@ -17,7 +17,11 @@ Command.BuildCommand(registration, (interaction) => {
     return sender.sendMessage("§cHome name cannot be empty");
 
   const homeDBFrmt = `${sender.name}_${homeName}`;
-
   if (!HomeDB.hasKey(homeDBFrmt))
-    return sender.sendMessage(`§cHome with name ${homeName} doesn't exist`);
+    return sender.sendMessage(`§cHome with name §e${homeName} §cdoesn't exist`);
+
+  HomeDB.delete(homeDBFrmt);
+  return sender.sendMessage(
+    `§aSuccessfully deleted home with name §e${homeName}`
+  );
 });

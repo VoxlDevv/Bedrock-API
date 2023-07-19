@@ -9,7 +9,7 @@ const registration: CommandRegistration = new CommandRegistration()
   .setUsage(["<homeName>"])
   .setExample(["home myHome"]);
 
-Command.BuildCommand(registration, (interaction) => {
+Command.BuildCommand(registration, async (interaction) => {
   const { sender, inputs } = interaction;
   const homeName = inputs.getInput(0) as any;
 
@@ -18,9 +18,11 @@ Command.BuildCommand(registration, (interaction) => {
 
   const homeDBFrmt = `${sender.name}_${homeName}`;
   if (!HomeDB.hasKey(homeDBFrmt))
-    return sender.sendMessage(`§cHome with name ${homeName} doesn't exist`);
+    return sender.sendMessage(`§cHome with name §e${homeName} §cdoesn't exist`);
 
   const parsedHome = HomeDB.get(homeDBFrmt);
+
+  await null;
   sender.teleport(
     {
       x: parsedHome.coordinate[0],
@@ -29,5 +31,7 @@ Command.BuildCommand(registration, (interaction) => {
     },
     { dimension: world.getDimension(parsedHome.dimension) }
   );
-  return sender.sendMessage(`§aSuccessfully teleported to home with name §e${homeName}`)
+  return sender.sendMessage(
+    `§aSuccessfully teleported to home with name §e${homeName}`
+  );
 });

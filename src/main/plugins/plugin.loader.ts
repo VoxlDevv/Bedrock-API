@@ -11,40 +11,34 @@ const pluginFolder: string[] = [
   "Custom Commands",
 ];
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+//.
+//.
+//.
+//.
+//.
+//.
+//.
+//.
+//.
+//.
+//.
+//.
+//.
+//.
 // Don't Touch
 import "./_ignore/index";
 const start: number = Date.now();
 for (const plugin of pluginFolder) {
   const end: number = Date.now();
   import(`./${plugin}/system`)
-    .then(() => {
-      throw `Loaded plugin: ${plugin} successfully, in ${end - start} ms`;
-    })
-    .catch((err) => {
-      throw `Error on loading plugin: ${plugin}\nError: ${err}\nStack: ${err.stack}`;
-    });
+    .then(() =>
+      console.warn(
+        `Loaded plugin: ${plugin} successfully, in ${end - start} ms`
+      )
+    )
+    .catch((err) =>
+      console.warn(
+        `Error on loading plugin: ${plugin}\nError: ${err}\nStack: ${err.stack}`
+      )
+    );
 }
