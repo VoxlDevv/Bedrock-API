@@ -140,6 +140,38 @@ class PlayerClass extends EntityClass {
   getPlayerObjectFromName(target: string): Player | undefined {
     return World.getOnlinePlayers().find((player) => player.name === target);
   }
+
+  /**
+   * Get needed xp to next level
+   */
+  needXpToLevelUp(): number {
+    return this.playerObject.totalXpNeededForNextLevel;
+  }
+
+  /**
+   * Get earned xp at current level
+   */
+  xpEarned(): number {
+    return this.playerObject.xpEarnedAtCurrentLevel;
+  }
+
+  /**
+   * Get inventory component
+   */
+  getInventoryComponent(): EntityInventoryComponent {
+    return this.inventory;
+  }
+
+  /**
+   * Get raw component
+   */
+  getRawPlayerComponent(): Player {
+    return this.playerObject;
+  }
+
+  Query(query: QueryName): boolean {
+    return this.playerObject[query];
+  }
 }
 
 export { PlayerClass };

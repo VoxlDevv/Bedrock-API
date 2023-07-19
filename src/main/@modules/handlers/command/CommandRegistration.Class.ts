@@ -7,7 +7,9 @@ class CommandRegistration {
   private aliases: string[];
   private usage: string[];
   private example: string[];
-  private inputs: { [key: number]: string[] };
+  private inputs: {
+    [key: number]: string[];
+  };
 
   /**
    * Command registration
@@ -91,15 +93,15 @@ class CommandRegistration {
   /**
    * Set command input
    */
-  setInputs(inputs: { [key: number]: string[] }) {
+  setInputs(inputs: { [key: number]: SupportedInputs }) {
     Object.assign(this.inputs, inputs);
     return this;
   }
 
   /**
-   * Extract to JSON
+   * Extract to JSON - You don't need this for creating custom command
    */
-  extractJSON() {
+  _ToJSON() {
     return {
       name: this.name,
       description: this.description,

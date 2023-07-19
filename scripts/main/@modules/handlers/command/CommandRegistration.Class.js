@@ -86,9 +86,9 @@ class CommandRegistration {
         return this;
     }
     /**
-     * Extract to JSON
+     * Extract to JSON - You don't need this for creating custom command
      */
-    extractJSON() {
+    _ToJSON() {
         return {
             name: this.name,
             description: this.description,

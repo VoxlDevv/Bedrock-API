@@ -28,7 +28,7 @@ class CommandClass {
      * @param callback
      */
     BuildCommand(registration, callback) {
-        const information = registration.extractJSON();
+        const information = registration._ToJSON();
         this.registration.set(information.name, {
             ...information,
             callback,
