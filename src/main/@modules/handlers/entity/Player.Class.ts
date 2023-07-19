@@ -169,6 +169,9 @@ class PlayerClass extends EntityClass {
     return this.playerObject;
   }
 
+  /**
+   * Query
+   */
   Query(query: QueryName): boolean {
     return this.playerObject[query];
   }

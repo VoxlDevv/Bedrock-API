@@ -135,6 +135,9 @@ class PlayerClass extends EntityClass {
     getRawPlayerComponent() {
         return this.playerObject;
     }
+    /**
+     * Query
+     */
     Query(query) {
         return this.playerObject[query];
     }
