@@ -17,7 +17,7 @@
   ---
   
   [![MIT License](https://img.shields.io/github/license/JustSkyDev/Bedrock-API?style=for-the-badge&color=yellow)](https://github.com/JustSkyDev/Bedrock-API/blob/main/LICENSE)
-  [![Discord Server](https://img.shields.io/discord/898202806052347984?color=blue&label=Discord&style=for-the-badge)](https://discord.gg/g4EJ38HZ7R)
+  [![Discord Server](https://img.shields.io/discord/1125432627382460498?color=blue&label=Discord&style=for-the-badge)](https://discord.gg/ffZHPHRBhY)
   [![GitHub Releases](https://img.shields.io/github/downloads/JustSkyDev/Bedrock-API/total?style=for-the-badge&color=orange)
   ](https://github.com/JustSkyDev/Bedrock-API/releases/latest)
   
