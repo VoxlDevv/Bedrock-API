@@ -1,7 +1,5 @@
 import {
-  BlockBreakAfterEvent,
   BlockExplodeAfterEvent,
-  BlockPlaceAfterEvent,
   ButtonPushAfterEvent,
   ChatSendAfterEvent,
   DataDrivenEntityTriggerAfterEvent,
@@ -11,7 +9,6 @@ import {
   EntityHitBlockAfterEvent,
   EntityHitEntityAfterEvent,
   EntityHurtAfterEvent,
-  EntityRemovedAfterEvent,
   EntitySpawnAfterEvent,
   ExplosionAfterEvent,
   ItemCompleteUseAfterEvent,
@@ -31,7 +28,6 @@ import {
   PlayerSpawnAfterEvent,
   PressurePlatePopAfterEvent,
   PressurePlatePushAfterEvent,
-  ProjectileHitAfterEvent,
   TargetBlockHitAfterEvent,
   TripWireTripAfterEvent,
   WeatherChangeAfterEvent,

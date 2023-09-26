@@ -8,7 +8,6 @@ class ChatClass {
      * @example broadcast({ text: "Hello world!" });
      */
     broadcast(rawtext, player) {
-        const JSONstring = JSON.stringify(rawtext);
         return this.runCommand(`tellraw ${player ? `"${player}"` : "@a"} {"rawtext":[${JSON.stringify(rawtext)}]}`);
     }
     /**
