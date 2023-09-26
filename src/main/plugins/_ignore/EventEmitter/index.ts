@@ -136,7 +136,7 @@ world.afterEvents.pistonActivate.subscribe((cb) =>
 );
 
 world.afterEvents.playerBreakBlock.subscribe((cb) =>
-  AfterEvents.emit("playerHitBlock", cb)
+  AfterEvents.emit("playerBreakBlock", cb)
 );
 
 world.afterEvents.playerJoin.subscribe((cb) =>
@@ -168,7 +168,7 @@ world.afterEvents.projectileHitBlock.subscribe((cb) =>
 );
 
 world.afterEvents.projectileHitEntity.subscribe((cb) =>
-  AfterEvents.emit("projectileHitBlock", cb)
+  AfterEvents.emit("projectileHitEntity", cb)
 );
 
 world.afterEvents.targetBlockHit.subscribe((cb) =>

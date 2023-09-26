@@ -9,6 +9,8 @@ import {
   EntityHitBlockAfterEvent,
   EntityHitEntityAfterEvent,
   EntityHurtAfterEvent,
+  EntityLoadAfterEventSignal,
+  EntityRemoveAfterEvent,
   EntitySpawnAfterEvent,
   ExplosionAfterEvent,
   ItemCompleteUseAfterEvent,
@@ -23,11 +25,15 @@ import {
   LeverActionAfterEvent,
   MessageReceiveAfterEvent,
   PistonActivateAfterEvent,
+  PlayerBreakBlockAfterEvent,
   PlayerJoinAfterEvent,
   PlayerLeaveAfterEvent,
+  PlayerPlaceBlockAfterEvent,
   PlayerSpawnAfterEvent,
   PressurePlatePopAfterEvent,
   PressurePlatePushAfterEvent,
+  ProjectileHitBlockAfterEvent,
+  ProjectileHitEntityAfterEvent,
   TargetBlockHitAfterEvent,
   TripWireTripAfterEvent,
   WeatherChangeAfterEvent,
@@ -35,9 +41,7 @@ import {
 } from "@minecraft/server";
 
 type AfterEventsList =
-  | "blockBreak"
   | "blockExplode"
-  | "blockPlace"
   | "buttonPush"
   | "chat"
   | "dataDrivenEntity"
@@ -47,6 +51,7 @@ type AfterEventsList =
   | "entityHitBlock"
   | "entityHitEntity"
   | "entityHurt"
+  | "entityLoad"
   | "entityRemoved"
   | "entitySpawn"
   | "explosion"
@@ -62,23 +67,22 @@ type AfterEventsList =
   | "leverAction"
   | "messageReceive"
   | "pistonActivate"
+  | "playerBreakBlock"
   | "playerJoin"
   | "playerLeave"
+  | "playerPlaceBlock"
   | "playerSpawn"
   | "pressurePlatePop"
   | "pressurePlatePush"
-  | "projectileHit"
+  | "projectileHitBlock"
+  | "projectileHitEntity"
   | "targetBlockHit"
   | "tripWireTrip"
   | "weatherChange"
   | "worldInitialize";
 
-type AfterEventCallback<T extends AfterEventsList> = T extends "blockBreak"
-  ? BlockBreakAfterEvent
-  : T extends "blockExplode"
+type AfterEventCallback<T extends AfterEventsList> = T extends "blockExplode"
   ? BlockExplodeAfterEvent
-  : T extends "blockPlace"
-  ? BlockPlaceAfterEvent
   : T extends "buttonPush"
   ? ButtonPushAfterEvent
   : T extends "chat"
@@ -97,8 +101,10 @@ type AfterEventCallback<T extends AfterEventsList> = T extends "blockBreak"
   ? EntityHitEntityAfterEvent
   : T extends "entityHurt"
   ? EntityHurtAfterEvent
+  : T extends "entityLoad"
+  ? EntityLoadAfterEventSignal
   : T extends "entityRemoved"
-  ? EntityRemovedAfterEvent
+  ? EntityRemoveAfterEvent
   : T extends "entitySpawn"
   ? EntitySpawnAfterEvent
   : T extends "explosion"
@@ -127,18 +133,24 @@ type AfterEventCallback<T extends AfterEventsList> = T extends "blockBreak"
   ? MessageReceiveAfterEvent
   : T extends "pistonActivate"
   ? PistonActivateAfterEvent
+  : T extends "playerBreakBlock"
+  ? PlayerBreakBlockAfterEvent
   : T extends "playerJoin"
   ? PlayerJoinAfterEvent
   : T extends "playerLeave"
   ? PlayerLeaveAfterEvent
+  : T extends "playerPlaceBlock"
+  ? PlayerPlaceBlockAfterEvent
   : T extends "playerSpawn"
   ? PlayerSpawnAfterEvent
   : T extends "pressurePlatePop"
   ? PressurePlatePopAfterEvent
   : T extends "pressurePlatePush"
   ? PressurePlatePushAfterEvent
-  : T extends "projectileHit"
-  ? ProjectileHitAfterEvent
+  : T extends "projectileHitBlock"
+  ? ProjectileHitBlockAfterEvent
+  : T extends "projectileHitEntity"
+  ? ProjectileHitEntityAfterEvent
   : T extends "targetBlockHit"
   ? TargetBlockHitAfterEvent
   : T extends "tripWireTrip"

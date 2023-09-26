@@ -6,6 +6,8 @@ import {
   ItemUseBeforeEvent,
   ItemUseOnBeforeEvent,
   PistonActivateBeforeEvent,
+  PlayerBreakBlockBeforeEvent,
+  PlayerPlaceBlockBeforeEvent,
 } from "@minecraft/server";
 
 type BeforeEventsList =
@@ -15,7 +17,9 @@ type BeforeEventsList =
   | "itemDefinition"
   | "itemUse"
   | "itemUseOn"
-  | "pistonActivate";
+  | "pistonActivate"
+  | "playerBreakBlock"
+  | "playerPlaceBlock";
 
 type BeforeEventCallback<T extends BeforeEventsList> = T extends "chat"
   ? ChatSendBeforeEvent
@@ -31,4 +35,8 @@ type BeforeEventCallback<T extends BeforeEventsList> = T extends "chat"
   ? ItemUseOnBeforeEvent
   : T extends "pistonActivate"
   ? PistonActivateBeforeEvent
+  : T extends "playerBreakBlock"
+  ? PlayerBreakBlockBeforeEvent
+  : T extends "playerPlaceBlock"
+  ? PlayerPlaceBlockBeforeEvent
   : undefined;
