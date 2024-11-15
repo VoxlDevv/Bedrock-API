@@ -1,3 +1,8 @@
+<h1>Migrate to <a href=https://github.com/VoxlDevv/BlockCore>BlockCore</a>!</h1>
+<h1>Migrate to <a href=https://github.com/VoxlDevv/BlockCore>BlockCore</a>!</h1>
+<h1>Migrate to <a href=https://github.com/VoxlDevv/BlockCore>BlockCore</a>!</h1>
+<h1>Migrate to <a href=https://github.com/VoxlDevv/BlockCore>BlockCore</a>!</h1>
+
 <!-- LOGO -->
 <div align="center">
 
